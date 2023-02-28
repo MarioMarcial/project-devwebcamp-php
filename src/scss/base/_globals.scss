@@ -1,0 +1,32 @@
+@use "./variables" as v;
+@use "./mixins" as m;
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+}
+body {
+  font-family: v.$main-font;
+  font-size: 1.6rem;
+}
+.container {
+  width: min(95%, 120rem);
+  margin: 0 auto;
+}
+a {
+  text-decoration: none;
+}
+img {
+  display: block;
+  max-width: 100%;
+}
+figure {
+  margin: 0;
+}
+ul {
+  list-style: none;
+}
