@@ -34,5 +34,33 @@
   }
   &__logo {
     @include m.flow-text(2rem, 8rem);
+    @include m.text-gradient(v.$primary, v.$secondary);
+    text-align: center;
+    @include m.tablet {
+      display: inline-block;
+      text-align: start;
+    }
+  }
+  &__text {
+    margin: 2rem 0;
+    font-size: 3rem;
+    font-weight: v.$bold;
+    text-align: center;
+    text-transform: uppercase;
+    color: v.$white;
+    @include m.tablet {
+      text-align: start;
+    }
+    &--mode {
+      font-size: 2rem;
+    }
+  }
+  &__button {
+    @include m.button(v.$secondary, v.$dark);
+    margin: 2rem 0;
+    text-transform: uppercase;
+    @include m.tablet {
+      width: auto;
+    }
   }
 }

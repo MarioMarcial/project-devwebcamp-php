@@ -71,7 +71,7 @@
 }
 
 @mixin container {
-  width: min(95%, 120rem);
+  width: min(95%, 140rem);
   margin: 0 auto;
 }
 
@@ -96,6 +96,8 @@
   font-size: clamp($min, -0.8rem +  10vw ,$max);
 }
 
-@mixin text-gradient {
-
+@mixin text-gradient($start, $end) {
+  background: linear-gradient(to right, $start, $end);
+  background-clip: text;
+  color: transparent;
 }
