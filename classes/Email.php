@@ -13,7 +13,7 @@ class Email {
     $this->token = $token;
   }
 
-  public function enviarConfirmacion() {
+  public function sendConfirmation() {
     // Template
     $template = file_get_contents('../views/templates/email-confirm-account-inline.php');
     $template = str_replace('%name%', $this->name, $template);
@@ -41,7 +41,7 @@ class Email {
     $mail->send();
   }
 
-  public function enviarInstrucciones() {
+  public function sendInstructions() {
     // Template
     $template = file_get_contents('../views/templates/email-reset-password-inline.php');
     $template = str_replace('%name%', $this->name, $template);
