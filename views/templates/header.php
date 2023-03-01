@@ -16,3 +16,16 @@
     </div>
   </div>
 </header>
+<div class="bar">
+  <div class="bar__content">
+    <a href="" class="bar__link">
+      <h2 class="bar__logo">&#60;DevWebCamp/></h2>
+    </a>
+    <nav class="nav">
+      <a href="/devwebcamp" class="nav__link">Evento</a>
+      <a href="/paquetes" class="nav__link">Paquetes</a>
+      <a href="/workshops-conferencias" class="nav__link">Workshops / Conferencias</a>
+      <a href="/registro" class="nav__link">Comprar Pase</a>
+    </nav>
+  </div>
+</div>

@@ -101,3 +101,12 @@
   background-clip: text;
   color: transparent;
 }
+@mixin logo {
+  margin-bottom: 2rem;
+  text-align: center;
+  color: v.$white;
+  @include desktop {
+    margin: 0;
+    text-align: start;
+  }
+}
