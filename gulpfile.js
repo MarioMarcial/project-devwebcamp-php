@@ -1,14 +1,11 @@
 const { src, dest, watch, parallel } = require("gulp");
-const sass = require("gulp-sass")(require("sass"));
-const autoprefixer = require("autoprefixer");
-const postcss = require("gulp-postcss");
-const sourcemaps = require("gulp-sourcemaps");
-const cssnano = require("cssnano");
 
-// JS
-const concat = require("gulp-concat");
-const terser = require("gulp-terser-js");
-const rename = require("gulp-rename");
+// CSS
+const sass = require('gulp-sass')(require('sass'));
+const autoprefixer = require('autoprefixer');
+const cssnano = require('cssnano');
+const postcss = require('gulp-postcss');
+const sourcemaps = require('gulp-sourcemaps');
 
 // images 
 const imagemin = require("gulp-imagemin"); // Minify images
@@ -16,6 +13,13 @@ const notify = require("gulp-notify");
 const cache = require("gulp-cache");
 const clean = require("gulp-clean");
 const webp = require("gulp-webp");
+const avif = require('gulp-avif');
+
+// JS
+const concat = require("gulp-concat");
+const terser = require("gulp-terser-js");
+const rename = require("gulp-rename");
+
 
 const paths = {
   scss: "src/scss/**/*.scss",
@@ -61,6 +65,16 @@ function convertToWebp() {
     .pipe(notify({ message: "Imagen Completada" }));
 }
 
+function convertToAvif( done ) {
+  const options = {
+      quality: 50
+  };
+  src('src/img/**/*.{png,jpg}')
+      .pipe( avif(options) )
+      .pipe( dest('./public/build/img') )
+  done();
+}
+
 function watchFiles() {
   watch(paths.scss, css);
   watch(paths.js, javascript);
@@ -71,4 +85,4 @@ function watchFiles() {
 exports.css = css;
 exports.watchFiles = watchFiles;
 exports.javascript = javascript;
-exports.default = parallel(css, javascript, images, convertToWebp, watchFiles);
+exports.default = parallel(css, javascript, images, convertToWebp, convertToAvif, watchFiles);
