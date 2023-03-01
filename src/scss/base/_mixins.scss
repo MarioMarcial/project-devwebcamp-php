@@ -79,3 +79,15 @@
   width: min(95%, 60rem);
   margin: 0 auto;
 }
+
+@mixin headings {
+  margin: 2rem 0;
+  font-family: v.$main-font;
+  font-weight: v.$black;
+}
+
+@mixin name-page {
+  @include headings;
+  margin: 6rem 0 3rem 0;
+  text-align: center;
+}

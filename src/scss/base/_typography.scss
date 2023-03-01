@@ -3,7 +3,7 @@
 h1,
 h2,
 h3 {
-  
+  @include m.headings;
 }
 h1 {
   font-size: 4rem;
@@ -16,4 +16,7 @@ h3 {
 }
 .text-center {
   text-align: center;
+}
+[class$="__heading"] {
+  @include m.name-page;
 }
