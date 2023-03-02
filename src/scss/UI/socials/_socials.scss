@@ -1,0 +1,13 @@
+@use "./base/variables" as v;
+@use "./base/mixins" as m;
+.socials-menu {
+  @include m.socials-menu(v.$white, 2rem);
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin: 4rem 0;
+  @include m.tablet {
+    justify-content: flex-end;
+    align-items: center;
+  }
+}
