@@ -1,18 +1,19 @@
 <main class="auth">
   <h2 class="auth__heading"><?php echo $title; ?></h2>
   <p class="auth__description">Registrate en DevWebCamp</p>
-  <form action="" class="form" method="POST">
+  <?php require_once __DIR__ . '/../templates/alerts.php' ?>
+  <form action="/registro" class="form" method="POST">
     <div class="form__group">
       <label for="name" class="form__label">Nombre:</label>
-      <input type="text" class="form__input" name="name" id="name" placeholder="Tu Nombre">
+      <input type="text" class="form__input" name="name" id="name" placeholder="Tu Nombre" value="<?php echo $user->name;?>">
     </div>
     <div class="form__group">
       <label for="lastname" class="form__label">Apellido:</label>
-      <input type="text" class="form__input" name="lastname" id="lastname" placeholder="Tu Apellido">
+      <input type="text" class="form__input" name="lastname" id="lastname" placeholder="Tu Apellido" value="<?php echo $user->lastname;?>">
     </div>
     <div class="form__group">
       <label for="email" class="form__label">Email:</label>
-      <input type="email" class="form__input" name="email" id="email" placeholder="Tu Email">
+      <input type="email" class="form__input" name="email" id="email" placeholder="Tu Email" value="<?php echo $user->email;?>">
     </div>
     <div class="form__group">
       <label for="password" class="form__label">Password:</label>
