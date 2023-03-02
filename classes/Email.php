@@ -15,7 +15,7 @@ class Email {
 
   public function sendConfirmation() {
     // Template
-    $template = file_get_contents('../views/templates/email-confirm-account-inline.php');
+    $template = file_get_contents('../views/templates/mails/email-confirm-account-inline.php');
     $template = str_replace('%name%', $this->name, $template);
     $template = str_replace('%token%', $this->token, $template);
 
@@ -43,7 +43,7 @@ class Email {
 
   public function sendInstructions() {
     // Template
-    $template = file_get_contents('../views/templates/email-reset-password-inline.php');
+    $template = file_get_contents('../views/templates/mails/email-reset-password-inline.php');
     $template = str_replace('%name%', $this->name, $template);
     $template = str_replace('%token%', $this->token, $template);
 
