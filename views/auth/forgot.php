@@ -1,7 +1,8 @@
 <main class="auth">
   <h2 class="auth__heading"><?php echo $title; ?></h2>
   <p class="auth__description">Recupera tu acceso a DevWebCamp</p>
-  <form action="" class="form" method="POST">
+  <?php require_once __DIR__ . '/../templates/alerts.php' ?>
+  <form action="/olvide" class="form" method="POST">
     <div class="form__group">
       <label for="email" class="form__label">Email:</label>
       <input type="email" class="form__input" name="email" id="email" placeholder="Tu Email">

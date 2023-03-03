@@ -23,13 +23,13 @@
         <tr>
           <td class="text-center" style="padding:0;text-align:center;">
             <a class="logo-container" href="#" style="display:inline-block;text-decoration:none;display:block;padding:40px 0 10px 0;">
-              <h1 class="logo" style='margin:0;font-family:"Josefin Sans", sans-serif;font-size:40px;color:#5672b3;'>UpTask</h1>
+              <h1 class="logo" style='margin:0;font-family:"Josefin Sans", sans-serif;font-size:40px;color:#5672b3;'>&#60;DevWebCamp/></h1>
             </a>
           </td>
         </tr>
         <tr>
           <td class="text-center" style="padding:0;text-align:center;">
-            <p class="slogan" style='margin:0;padding:10px 0 40px 0;border-bottom:1px solid #5672b3;font-size:20px;font-family:"Josefin Sans", sans-serif;font-weight:700;color:#e2e2e2;'>Crea y Administra tus Proyectos</p>
+            <p class="slogan" style='margin:0;padding:10px 0 40px 0;border-bottom:1px solid #5672b3;font-size:20px;font-family:"Josefin Sans", sans-serif;font-weight:700;color:#e2e2e2;'>Conferencias para desarrolladores</p>
           </td>
         </tr>
         <!-- BODY -->

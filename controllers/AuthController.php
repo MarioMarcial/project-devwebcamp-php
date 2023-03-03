@@ -167,18 +167,19 @@ class AuthController {
           if($result) {
             // succes alert
             User::setAlert('success', 'Password actualizado correctamente');
+            $valid_token = false;
             // redirection
-            header('Refresh: 3; url=/');
+            header('Refresh: 3; url=/login');
           }
         }
       }
     }
     $alerts = User::getAlerts();
     // Render view
-    $router->render("auth/reset", [
+    $router->render("auth/recover", [
       'title' => 'Restablecer password',
       'alerts' => $alerts,
-      'show' => $valid_token
+      'valid_token' => $valid_token
     ]);
   }
 
