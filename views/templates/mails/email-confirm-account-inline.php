@@ -45,7 +45,7 @@
                     el botón debajo para confirmar tu correo y así disfrutar de
                     todos los servicios.
                   </p>
-                  <a class="btn btn-primary" href="http://localhost:3000/confirmar?token=%token%" style="display:inline-block;text-decoration:none;margin-top:40px;margin-bottom:10px;padding:15px 50px;border-radius:2px;font-size:20px;font-weight:bold;background-color:#5672b3;color:#ffffff;">Confirmar Cuenta</a>
+                  <a class="btn btn-primary" href="http://localhost:3000/confirmar-cuenta?token=%token%" style="display:inline-block;text-decoration:none;margin-top:40px;margin-bottom:10px;padding:15px 50px;border-radius:2px;font-size:20px;font-weight:bold;background-color:#5672b3;color:#ffffff;">Confirmar Cuenta</a>
                   <p class="email-dismiss" style="margin:0;margin-top:40px;line-height:2;">
                     Si tú no te registraste en DevWebCamp, no te preocupes solo
                     ignora este correo electrónico.

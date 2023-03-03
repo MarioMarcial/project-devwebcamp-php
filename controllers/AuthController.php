@@ -198,7 +198,7 @@ class AuthController {
     $user = User::where('token', $token);
     if(empty($user)) {
       // There is no user with this token
-      User::setAlert('error', 'Token no válido');
+      User::setAlert('error', 'Token no válido, la cuenta no se confirmó');
     } else {
       // confirm account
       $user->confirmed = 1;
@@ -207,8 +207,6 @@ class AuthController {
       $result = $user->save();
       if($result) {
         User::setAlert('success', 'Cuenta Confirmada Exitosamente');
-        // redirection
-        header('Refresh: 3; url=/');
       }
     }
     $alerts = User::getAlerts();

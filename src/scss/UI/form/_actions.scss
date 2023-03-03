@@ -3,10 +3,14 @@
   display: flex;
   justify-content: space-between;
   margin-top: 3rem;
-
+  &--center {
+    @extend .actions;
+    justify-content: center;
+  }
   &__link {
     font-size: 1.4rem;
     font-weight: v.$thin;
     color: v.$dark;
   }
+ 
 }

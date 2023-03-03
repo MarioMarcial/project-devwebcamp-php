@@ -15,8 +15,8 @@
     background-color: lighten($color: v.$error, $amount: 60);
   }
   &__success {
-    color: v.$success;
+    color: darken($color: v.$success, $amount: 20);
     border-left: .5rem solid v.$success;
-    background-color: lighten($color: v.$error, $amount: 40);
+    background-color: lighten($color: v.$success, $amount: 40);
   }
 }
