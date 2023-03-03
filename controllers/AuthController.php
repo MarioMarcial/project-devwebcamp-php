@@ -27,6 +27,13 @@ class AuthController {
             $_SESSION['email'] = $user->email;
             $_SESSION['admin'] = $user->admin ?? null;
 
+            // Redirect
+            if($user->admin) {
+              header('Location: /admin/dashboard');
+            } else {
+              header('Location: /finalizar-registro');
+            }
+
           } else {
             User::setAlert('error', 'Password incorrecto');
           }
