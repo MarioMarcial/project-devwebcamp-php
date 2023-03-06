@@ -20,14 +20,7 @@
     }
   }
   &__link {
-    font-size: 1.4rem;
-    text-transform: uppercase;
-    font-weight: v.$bold;
-    color: v.$white;
-    @include m.transition(color);
-    &:hover {
-      color: v.$primary;
-    }
+    @include m.link;
   }
   &__content {
     padding-top: 10rem;

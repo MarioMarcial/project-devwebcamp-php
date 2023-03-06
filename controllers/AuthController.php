@@ -49,9 +49,11 @@ class AuthController {
   }
 
   public static function logout() {
-    startSession();
-    $_SESSION = [];
-    header('Location: /');
+    if($_SERVER['REQUEST_METHOD'] === 'POST') {
+      startSession();
+      $_SESSION = [];
+      header('Location: /');
+    }
   }
 
   public static function register(Router $router) {

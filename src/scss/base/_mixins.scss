@@ -144,3 +144,18 @@
     display: none;
   }
 }
+
+@mixin link {
+  all: unset;
+  border: none;
+  font-size: 1.4rem;
+  text-transform: uppercase;
+  font-weight: v.$bold;
+  color: v.$white;
+  background-color: transparent;
+  @include transition(color);
+  &:hover {
+    cursor: pointer;
+    color: v.$primary;
+  }
+}
