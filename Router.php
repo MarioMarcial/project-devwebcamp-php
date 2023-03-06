@@ -40,6 +40,13 @@ class Router {
     include __DIR__ . "/views/$view.php";
     // memory cleaning
     $content = ob_get_clean();
-    include __DIR__ . "/views/layout.php";
+
+    // Use the layout according to the url
+    $currentUrl = $_SERVER['PATH_INFO'] ?? '/';
+    if(str_contains($currentUrl, '/admin')) {
+      include __DIR__ . "/views/admin-layout.php";
+    } else {
+      include __DIR__ . "/views/layout.php";
+    }
   }
 }
