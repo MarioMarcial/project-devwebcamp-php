@@ -13,16 +13,20 @@ function sanitize($html) : string {
 }
 
 // Function that checks that the user is authenticated.
-function isAuth() : void {
+function is_auth() : void {
   if(!isset($_SESSION['login'])) {
     header('Location: /');
   }
 }
 
 // Only start a session if it has not been initialized beforehand
-function startSession() {
+function start_session() {
   if(!isset($_SESSION)){
     session_start();
   }  
+}
+
+function current_page($path) : bool {
+  return str_contains($_SERVER['PATH_INFO'], $path) ? true : false;
 }
 ?>

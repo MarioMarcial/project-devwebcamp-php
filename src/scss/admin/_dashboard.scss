@@ -55,7 +55,7 @@
     padding: 2rem;
     color: lighten($color: v.$gray-dark, $amount: 40);
     @include m.transition(border-radius color background-color);
-    &:hover {
+    &:hover, &--current {
       border-radius: 1rem;
       color: v.$white;
       background-color: lighten($color: v.$gray-dark, $amount: 20);
