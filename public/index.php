@@ -1,9 +1,13 @@
 <?php 
 require_once __DIR__ . '/../includes/app.php';
 
-use Controllers\AuthController;
-use Controllers\DashboardController;
 use MVC\Router;
+use Controllers\AuthController;
+use Controllers\GiftsController;
+use Controllers\EventsController;
+use Controllers\SpeakersController;
+use Controllers\DashboardController;
+use Controllers\RegisteredController;
 $router = new Router();
 
 // Login
@@ -32,5 +36,16 @@ $router->get('/confirmar-cuenta', [AuthController::class, 'confirm']);
 // Admin area
 $router->get('/admin/dashboard', [DashboardController::class, 'index']);
 
+// Speakers
+$router->get('/admin/ponentes', [SpeakersController::class, 'index']);
+
+// Events
+$router->get('/admin/eventos', [EventsController::class, 'index']);
+
+// Registered
+$router->get('/admin/registrados', [RegisteredController::class, 'index']);
+
+// Gifts
+$router->get('/admin/regalos', [GiftsController::class, 'index']);
 $router->checkRoutes();
 ?>
