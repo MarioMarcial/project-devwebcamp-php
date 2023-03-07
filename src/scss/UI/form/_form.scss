@@ -19,6 +19,22 @@
     gap: 1rem;
     margin: 1.5rem 0;
   }
+  &__container-icon {
+    display: flex;
+    border-radius: .5rem;
+    overflow: hidden;
+  }
+  &__icon {
+    display: grid;
+    place-content: center;
+    width: 4rem;
+    background-color: v.$gray-dark;
+
+    i {
+      font-size: 2rem;
+      color: v.$white;
+    }
+  }
   &__label {
     display: block;
     font-size: 1.8rem;
@@ -31,6 +47,12 @@
 
     &--file {
       border: none;
+    }
+
+    &--socials {
+      flex: 1;
+      border-top-left-radius: 0;
+      border-bottom-left-radius:0; 
     }
   }
   &__submit {

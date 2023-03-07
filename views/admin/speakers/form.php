@@ -31,3 +31,54 @@
     </div>
   </div>
 </fieldset>
+<fieldset class="form__fieldset">
+  <legend class="form__legend">Redes Sociales</legend>
+  <div class="form__group">
+    <div class="form__container-icon">
+      <div class="form__icon">
+        <i class="fa-brands fa-facebook"></i>
+      </div>
+      <input type="text" class="form__input form__input--socials" name="socials[facebook]" placeholder="Facebook" value="<?php echo $speaker->facebook ?? ''; ?>">
+    </div>
+  </div>
+  <div class="form__group">
+    <div class="form__container-icon">
+      <div class="form__icon">
+        <i class="fa-brands fa-twitter"></i>
+      </div>
+      <input type="text" class="form__input form__input--socials" name="socials[twitter]" placeholder="Twitter" value="<?php echo $speaker->twitter ?? ''; ?>">
+    </div>
+  </div>
+  <div class="form__group">
+    <div class="form__container-icon">
+      <div class="form__icon">
+        <i class="fa-brands fa-youtube"></i>
+      </div>
+      <input type="text" class="form__input form__input--socials" name="socials[youtube]" placeholder="Youtube" value="<?php echo $speaker->youtube ?? ''; ?>">
+    </div>
+  </div>
+  <div class="form__group">
+    <div class="form__container-icon">
+      <div class="form__icon">
+        <i class="fa-brands fa-instagram"></i>
+      </div>
+      <input type="text" class="form__input form__input--socials" name="socials[instagram]" placeholder="Instagram" value="<?php echo $speaker->instagram ?? ''; ?>">
+    </div>
+  </div>
+  <div class="form__group">
+    <div class="form__container-icon">
+      <div class="form__icon">
+        <i class="fa-brands fa-tiktok"></i>
+      </div>
+      <input type="text" class="form__input form__input--socials" name="socials[tiktok]" placeholder="Tiktok" value="<?php echo $speaker->tiktok ?? ''; ?>">
+    </div>
+  </div>
+  <div class="form__group">
+    <div class="form__container-icon">
+      <div class="form__icon">
+        <i class="fa-brands fa-github"></i>
+      </div>
+      <input type="text" class="form__input form__input--socials" name="socials[github]" placeholder="Github" value="<?php echo $speaker->github ?? ''; ?>">
+    </div>
+  </div>
+</fieldset>
