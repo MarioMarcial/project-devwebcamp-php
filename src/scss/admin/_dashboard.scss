@@ -24,14 +24,17 @@
     @include m.flow-text(2rem, 3rem);
   }
   &__nav {
-
+    text-align: center;
   }
   &__form {
-    display: flex;
-    justify-content: center;
+    @extend .dashboard__container;
+    @include m.container-md;
   }
   &__submit--logout {
     @include m.link;
+    @include m.tablet {
+      padding: 2rem;
+    }
   }
 
   &__grid {
@@ -81,6 +84,7 @@
     @include m.tablet {
       display: flex;
       justify-content: flex-end;
+      margin-bottom: 5rem;
     }
   }
   &__button {
@@ -90,5 +94,12 @@
     @include m.tablet {
       width: auto;
     }
+  }
+
+  &__container {
+    @include m.shadow;
+    padding: 2rem;
+    border-radius: 1rem;
+    background-color: v.$white;
   }
 }

@@ -9,6 +9,6 @@
   <?php include_once __DIR__ . '../../../templates/alerts.php'; ?> 
   <form class="form" action="/admin/ponentes/crear" method="POST" enctype="multipart/form-data">
     <?php include_once __DIR__ . '/form.php'; ?>
-    <input type="submit" class="form__submit" value="Registrar Ponente">
+    <input type="submit" class="form__submit form__submit--register" value="Registrar Ponente">
   </form>
 </div>

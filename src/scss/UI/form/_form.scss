@@ -3,7 +3,16 @@
 .form {
   display: flex;
   flex-direction: column;
-
+  &__fieldset {
+    margin-top: 1rem;
+    padding: 0;
+    border: none;
+  }
+  &__legend {
+    font-size: 2.2rem;
+    margin-bottom: 2rem;
+    color: v.$gray;
+  }
   &__group {
     display: flex;
     flex-direction: column;
@@ -24,5 +33,9 @@
     @include m.button(v.$primary, v.$white);
     width: auto;
     align-self: flex-start;
+
+    &--register {
+      width: 100%;
+    }
   }
 }
