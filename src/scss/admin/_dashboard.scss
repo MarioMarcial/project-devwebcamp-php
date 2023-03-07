@@ -77,4 +77,18 @@
       padding: 1rem 5rem 3rem 5rem;
     }
   }
+  &__container-button {
+    @include m.tablet {
+      display: flex;
+      justify-content: flex-end;
+    }
+  }
+  &__button {
+    @include m.button(v.$primary, v.$white);
+    font-size: 1.4rem;
+    text-transform: uppercase;
+    @include m.tablet {
+      width: auto;
+    }
+  }
 }

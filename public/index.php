@@ -38,6 +38,7 @@ $router->get('/admin/dashboard', [DashboardController::class, 'index']);
 
 // Speakers
 $router->get('/admin/ponentes', [SpeakersController::class, 'index']);
+$router->get('/admin/ponentes/crear', [SpeakersController::class, 'create']);
 
 // Events
 $router->get('/admin/eventos', [EventsController::class, 'index']);
