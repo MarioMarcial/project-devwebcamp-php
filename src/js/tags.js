@@ -7,6 +7,12 @@
 
     let tags = [];
 
+    // Get tags from hidden input
+    if(tagsInputHidden.value !== '') {
+      tags = tagsInputHidden.value.split(',');
+      showTags();
+    }
+
     // Listening to changes in the input
     tagsInput.addEventListener('keypress', saveTag);
 
