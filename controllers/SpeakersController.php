@@ -57,4 +57,25 @@ class SpeakersController {
       'speaker' => $speaker
     ]);
   }
+
+  public static function edit(Router $router) {
+    $alerts = [];
+    // Id validation
+    $id = $_GET['id'];
+    $id = filter_var($id, FILTER_VALIDATE_INT);
+    if(!$id) {
+      header('Location: /admin/ponentes');
+    }
+    // Get speaker data
+    $speaker = Speaker::find($id);
+    if(!$speaker) {
+      header('Location: /admin/ponentes');
+    }
+
+    $router->render('admin/speakers/edit', [
+      'title' => 'Editar Ponente',
+      'alerts' => $alerts,
+      'speaker' => $speaker
+    ]);
+  }
 }

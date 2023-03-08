@@ -36,6 +36,9 @@
     font-size: 1.4rem;
     font-weight: v.$bold;
     text-transform: uppercase;
+    &:hover {
+      cursor: pointer;
+    }
 
     &--edit, &--delete {
       display: flex;
