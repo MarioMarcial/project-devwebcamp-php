@@ -1,5 +1,7 @@
 <?php
 namespace Controllers;
+
+use Model\Speaker;
 use MVC\Router;
 
 class SpeakersController {
@@ -12,9 +14,17 @@ class SpeakersController {
 
   public static function create(Router $router) {
     $alerts = [];
+    $speaker = new Speaker;
+    if($_SERVER['REQUEST_METHOD'] === 'POST') {
+      $speaker->sync();
+
+      // validate
+      $alerts = $speaker->validate();
+    }
     $router->render('admin/speakers/create', [
       'title' => 'Registrar Ponente',
-      'alerts' => $alerts
+      'alerts' => $alerts,
+      'speaker' => $speaker
     ]);
   }
 }
