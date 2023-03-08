@@ -111,11 +111,12 @@ class SpeakersController {
 
         $result = $speaker->save();
         if($result) {
-          header('Location: /admin/ponentes');
+          Speaker::setAlert('success', 'Ponente Actualizado');
+          header('Refresh 2: /admin/ponentes/editar?id=' . $speaker->id);
         }
       }
     }
-    
+    $alerts = Speaker::getAlerts();
     $router->render('admin/speakers/edit', [
       'title' => 'Editar Ponente',
       'alerts' => $alerts,

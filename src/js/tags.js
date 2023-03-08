@@ -19,7 +19,7 @@
     function saveTag(e) {
       if(e.keyCode === 44) {
         e.preventDefault();
-        const regexp = /^([A-Za-z0-9\u002e\u002b\u0023]){2,15}$/i;
+        const regexp = /^([A-Za-z0-9\u002e\u002b\u0023\u0020]){2,15}$/i;
         if(!regexp.exec(e.target.value.trim())) {
           tagsInput.value = '';
           return;
@@ -46,15 +46,16 @@
       })
       updateInputHidden();
     }
+    
+    function deleteTag(e) {
+      e.target.remove();
+      tags = tags.filter(tag => tag !== e.target.textContent.toLowerCase());
+      updateInputHidden();
+    }
 
     function updateInputHidden() {
       tagsInputHidden.value = tags.toString();
     }
 
-    function deleteTag(e) {
-      e.target.remove();
-      tags = tags.filter(tag => tag !== e.target.textContent);
-      updateInputHidden();
-    }
   }
 })()
