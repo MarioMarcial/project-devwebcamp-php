@@ -26,18 +26,29 @@ class SpeakersController {
           mkdir($image_folder, 0755, true);
         }
 
-        $png_image = Image::make($_FILES['image']['tmp_name']->fit(800,800)->encode('png', 80));
-        $webp_image = Image::make($_FILES['image']['tmp_name']->fit(800,800)->encode('webp', 80));
+        $png_image = Image::make($_FILES['image']['tmp_name'])->fit(800,800)->encode('png', 80);
+        $webp_image = Image::make($_FILES['image']['tmp_name'])->fit(800,800)->encode('webp', 80);
 
         $name_image = md5(uniqid(rand(), true));
 
         $_POST['image'] = $name_image;
       } 
 
-      $speaker->sync();
-
+      $_POST['socials'] = json_encode($_POST['socials'], JSON_UNESCAPED_SLASHES);
+      $speaker->sync($_POST);
       // validate
       $alerts = $speaker->validate();
+      // Saving images to the server 
+      if(empty($alerts)) {
+        $png_image->save($image_folder . '/' . $name_image . ".png");
+        $png_image->save($image_folder . '/' . $name_image . ".webp");
+
+        // Save speaker to the bd
+        $result = $speaker->save();
+        if($result) {
+          header('Location: /admin/ponentes');
+        }
+      }
     }
     $router->render('admin/speakers/create', [
       'title' => 'Registrar Ponente',
