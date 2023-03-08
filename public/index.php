@@ -35,6 +35,7 @@ $router->get('/confirmar-cuenta', [AuthController::class, 'confirm']);
 
 // Admin area
 $router->get('/admin/dashboard', [DashboardController::class, 'index']);
+$router->post('/admin/dashboard', [DashboardController::class, 'index']);
 
 // Speakers
 $router->get('/admin/ponentes', [SpeakersController::class, 'index']);
