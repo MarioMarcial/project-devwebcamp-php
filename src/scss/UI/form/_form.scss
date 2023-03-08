@@ -55,6 +55,9 @@
       border-bottom-left-radius:0; 
     }
   }
+  &__list {
+    @include m.tags;
+  }
   &__submit {
     @include m.button(v.$primary, v.$white);
     width: auto;
