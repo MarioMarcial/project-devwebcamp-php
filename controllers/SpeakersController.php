@@ -74,6 +74,47 @@ class SpeakersController {
     }
 
     $speaker->current_image = $speaker->image;
+
+    if($_SERVER['REQUEST_METHOD'] === 'POST') {
+      // New image
+      if(!empty($_FILES['image']['tmp_name'])) {
+        $image_folder = '../public/img/speakers';
+        // Create folder if it dosn't exist
+        if(!is_dir($image_folder)) {
+          mkdir($image_folder, 0755, true);
+        }
+
+        $png_image = Image::make($_FILES['image']['tmp_name'])->fit(800,800)->encode('png', 80);
+        $webp_image = Image::make($_FILES['image']['tmp_name'])->fit(800,800)->encode('webp', 80);
+
+        $name_image = md5(uniqid(rand(), true));
+
+        $_POST['image'] = $name_image;
+      } else {
+        $_POST['image'] = $speaker->current_image;
+      }
+
+      $_POST['socials'] = json_encode($_POST['socials'], JSON_UNESCAPED_SLASHES);
+      $speaker->sync($_POST);
+      $alerts = $speaker->validate();
+      if(empty($alerts)) {
+        // If there is a new image then, create the following images
+        if(isset($name_image)) {
+          // Delete prev image
+          unlink($image_folder . '/' . $speaker->current_image . ".png" );
+          unlink($image_folder . '/' . $speaker->current_image . ".webp" );
+
+          // Save the new image
+          $png_image->save($image_folder . '/' . $name_image . ".png");
+          $png_image->save($image_folder . '/' . $name_image . ".webp");
+        }
+
+        $result = $speaker->save();
+        if($result) {
+          header('Location: /admin/ponentes');
+        }
+      }
+    }
     
     $router->render('admin/speakers/edit', [
       'title' => 'Editar Ponente',
