@@ -8,8 +8,8 @@
 <div class="dashboard__container">
   <?php if(!empty($speakers)) { ?>
     <table class="table">
-      <thead>
-        <tr>
+      <thead class="table__head">
+        <tr class="table__tr">
           <th scope="col" class="table__th">Nombre</th>
           <th scope="col" class="table__th">Ubicación</th>
           <th scope="col" class="table__th"></th>
@@ -25,12 +25,12 @@
               <?php echo $speaker->city . ", " . $speaker->country;?>
             </td>
             <td class="table__td--actions">
-              <a href="/admin/ponentes/editar?id=<?php echo $speaker->id; ?>">
+              <a class="table__action table__action--edit" href="/admin/ponentes/editar?id=<?php echo $speaker->id; ?>">
                 <i class="fa-solid fa-user-pen"></i>
                 Editar
               </a>
               <form class="table__form" method="POST">
-                <button type="submit">
+                <button class="table__action table__action--delete" type="submit">
                   <i class="fa-solid fa-circle-xmark"></i>
                   Eliminar
                 </button>
