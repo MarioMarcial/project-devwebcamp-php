@@ -1,7 +1,12 @@
 (function() {
   const tagsInput = document.querySelector('#tags_input');
-  let tags = [];
   if(tagsInput) {
+
+    const tagsDiv = document.querySelector('#tags');
+    const tagsInputHidden = document.querySelector('[name="tags"]');
+
+    let tags = [];
+
     // Listening to changes in the input
     tagsInput.addEventListener('keypress', saveTag);
 
@@ -12,11 +17,38 @@
         if(!regexp.exec(e.target.value.trim())) {
           tagsInput.value = '';
           return;
+        } 
+        if (tags.includes(e.target.value.toLowerCase())) {
+          tagsInput.value = '';
+          return;
         }
-        tags = [...tags, e.target.value.trim()];
+        
+        tags = [...tags, e.target.value.toLowerCase().trim()];
         tagsInput.value = '';
-        console.log(tags);
+        showTags();
       }
+    }
+
+    function showTags() {
+      tagsDiv.textContent = '';
+      tags.forEach(tag => {
+        const tagElement = document.createElement('LI');
+        tagElement.classList.add('form__tag');
+        tagElement.textContent = tag[0].toUpperCase() + tag.substring(1);
+        tagElement.ondblclick = deleteTag;
+        tagsDiv.appendChild(tagElement);
+      })
+      updateInputHidden();
+    }
+
+    function updateInputHidden() {
+      tagsInputHidden.value = tags.toString();
+    }
+
+    function deleteTag(e) {
+      e.target.remove();
+      tags = tags.filter(tag => tag !== e.target.textContent);
+      updateInputHidden();
     }
   }
 })()

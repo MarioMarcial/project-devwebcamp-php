@@ -26,9 +26,8 @@
   <div class="form__group">
     <label for="tags_input" class="form__label">Áreas de Experiencia (separadas por coma):</label>
     <input type="text" class="form__input" id="tags_input" placeholder="Ej. Node.js, PHP, CSS, Laravel, UX / UI">
-    <div id="tags" class="form__list">
-      <input type="hidden" name="tags" value="<?php echo $speaker->tags ?? ''; ?>">
-    </div>
+    <div id="tags" class="form__list"></div>
+    <input type="hidden" name="tags" value="<?php echo $speaker->tags ?? ''; ?>">
   </div>
 </fieldset>
 <fieldset class="form__fieldset">
