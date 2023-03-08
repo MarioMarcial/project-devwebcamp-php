@@ -72,6 +72,8 @@ class SpeakersController {
       header('Location: /admin/ponentes');
     }
 
+    $speaker->current_image = $speaker->image;
+
     $router->render('admin/speakers/edit', [
       'title' => 'Editar Ponente',
       'alerts' => $alerts,

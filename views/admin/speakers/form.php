@@ -19,6 +19,16 @@
   <div class="form__group">
     <label for="country" class="form__label">Imagen:</label>
     <input type="file" class="form__input form__input--file" name="image" id="image">
+    <?php if(isset($speaker->current_image)) { ?>
+      <p class="form__text">Imagen Actual:</p>
+      <div class="form__image">
+        <picture>
+          <source srcset="<?php echo $_ENV['HOST'] . '/img/speakers/' . $speaker->image?>.webp" type="image/webp">
+          <source srcset="<?php echo $_ENV['HOST'] . '/img/speakers/' . $speaker->image?>.png" type="image/png">
+          <img src="<?php echo $_ENV['HOST'] . '/img/speakers/' . $speaker->image?>.png" alt="Imagen Ponente">
+        </picture>
+      </div>
+    <?php } ?>
   </div>
 </fieldset>
 <fieldset class="form__fieldset">
