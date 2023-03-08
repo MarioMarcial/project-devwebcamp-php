@@ -54,7 +54,8 @@ class SpeakersController {
     $router->render('admin/speakers/create', [
       'title' => 'Registrar Ponente',
       'alerts' => $alerts,
-      'speaker' => $speaker
+      'speaker' => $speaker,
+      'socials' => json_decode($speaker->socials)
     ]);
   }
 
@@ -73,11 +74,12 @@ class SpeakersController {
     }
 
     $speaker->current_image = $speaker->image;
-
+    
     $router->render('admin/speakers/edit', [
       'title' => 'Editar Ponente',
       'alerts' => $alerts,
-      'speaker' => $speaker
+      'speaker' => $speaker,
+      'socials' => json_decode($speaker->socials)
     ]);
   }
 }

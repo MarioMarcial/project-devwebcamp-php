@@ -48,7 +48,7 @@
       <div class="form__icon">
         <i class="fa-brands fa-facebook"></i>
       </div>
-      <input type="text" class="form__input form__input--socials" name="socials[facebook]" placeholder="Facebook" value="<?php echo $speaker->facebook ?? ''; ?>">
+      <input type="text" class="form__input form__input--socials" name="socials[facebook]" placeholder="Facebook" value="<?php echo $socials->facebook ?? ''; ?>">
     </div>
   </div>
   <div class="form__group">
@@ -56,7 +56,7 @@
       <div class="form__icon">
         <i class="fa-brands fa-twitter"></i>
       </div>
-      <input type="text" class="form__input form__input--socials" name="socials[twitter]" placeholder="Twitter" value="<?php echo $speaker->twitter ?? ''; ?>">
+      <input type="text" class="form__input form__input--socials" name="socials[twitter]" placeholder="Twitter" value="<?php echo $socials->twitter ?? ''; ?>">
     </div>
   </div>
   <div class="form__group">
@@ -64,7 +64,7 @@
       <div class="form__icon">
         <i class="fa-brands fa-youtube"></i>
       </div>
-      <input type="text" class="form__input form__input--socials" name="socials[youtube]" placeholder="Youtube" value="<?php echo $speaker->youtube ?? ''; ?>">
+      <input type="text" class="form__input form__input--socials" name="socials[youtube]" placeholder="Youtube" value="<?php echo $socials->youtube ?? ''; ?>">
     </div>
   </div>
   <div class="form__group">
@@ -72,7 +72,7 @@
       <div class="form__icon">
         <i class="fa-brands fa-instagram"></i>
       </div>
-      <input type="text" class="form__input form__input--socials" name="socials[instagram]" placeholder="Instagram" value="<?php echo $speaker->instagram ?? ''; ?>">
+      <input type="text" class="form__input form__input--socials" name="socials[instagram]" placeholder="Instagram" value="<?php echo $socials->instagram ?? ''; ?>">
     </div>
   </div>
   <div class="form__group">
@@ -80,7 +80,7 @@
       <div class="form__icon">
         <i class="fa-brands fa-tiktok"></i>
       </div>
-      <input type="text" class="form__input form__input--socials" name="socials[tiktok]" placeholder="Tiktok" value="<?php echo $speaker->tiktok ?? ''; ?>">
+      <input type="text" class="form__input form__input--socials" name="socials[tiktok]" placeholder="Tiktok" value="<?php echo $socials->tiktok ?? ''; ?>">
     </div>
   </div>
   <div class="form__group">
@@ -88,7 +88,7 @@
       <div class="form__icon">
         <i class="fa-brands fa-github"></i>
       </div>
-      <input type="text" class="form__input form__input--socials" name="socials[github]" placeholder="Github" value="<?php echo $speaker->github ?? ''; ?>">
+      <input type="text" class="form__input form__input--socials" name="socials[github]" placeholder="Github" value="<?php echo $socials->github ?? ''; ?>">
     </div>
   </div>
 </fieldset>
