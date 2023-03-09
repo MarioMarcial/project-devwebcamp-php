@@ -50,9 +50,9 @@ class AuthController {
 
   public static function logout() {
     if($_SERVER['REQUEST_METHOD'] === 'POST') {
-      startSession();
+      start_session();
       $_SESSION = [];
-      header('Location: /');
+      header('Location: /login');
     }
   }
 

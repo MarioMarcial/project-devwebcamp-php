@@ -13,10 +13,16 @@ function sanitize($html) : string {
 }
 
 // Function that checks that the user is authenticated.
-function is_auth() : void {
-  if(!isset($_SESSION['login'])) {
-    header('Location: /');
-  }
+function is_auth() : bool {
+  session_start();
+  return isset($_SESSION['name']) && !empty($_SESSION);
+}
+
+function is_admin() : bool {
+  if(!isset($_SESSION)){
+    session_start();
+  } 
+  return isset($_SESSION['admin']) && !empty($_SESSION['admin']);
 }
 
 // Only start a session if it has not been initialized beforehand

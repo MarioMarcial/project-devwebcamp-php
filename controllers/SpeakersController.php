@@ -7,6 +7,9 @@ use Intervention\Image\ImageManagerStatic as Image;
 
 class SpeakersController {
   public static function index(Router $router) {
+    if(!is_admin()) {      
+      header('Location: /login');
+    }
     $speakers = Speaker::all();
     $router->render('admin/speakers/index', [
       'title' => 'Ponentes / Conferencistas',
@@ -15,10 +18,15 @@ class SpeakersController {
   }
 
   public static function create(Router $router) {
+    if(!is_admin()) {      
+      header('Location: /login');
+    }
     $alerts = [];
     $speaker = new Speaker;
     if($_SERVER['REQUEST_METHOD'] === 'POST') {
-
+      if(!is_admin()) {      
+        header('Location: /login');
+      }
       // Read image
       if(!empty($_FILES['image']['tmp_name'])) {
         $image_folder = '../public/img/speakers';
@@ -60,6 +68,9 @@ class SpeakersController {
   }
 
   public static function edit(Router $router) {
+    if(!is_admin()) {      
+      header('Location: /login');
+    }
     $alerts = [];
     // Id validation
     $id = $_GET['id'];
@@ -76,6 +87,9 @@ class SpeakersController {
     $speaker->current_image = $speaker->image;
 
     if($_SERVER['REQUEST_METHOD'] === 'POST') {
+      if(!is_admin()) {      
+        header('Location: /login');
+      }
       // New image
       if(!empty($_FILES['image']['tmp_name'])) {
         $image_folder = '../public/img/speakers';
@@ -126,7 +140,13 @@ class SpeakersController {
   }
 
   public static function delete() {
+    if(!is_admin()) {      
+      header('Location: /login');
+    }
     if($_SERVER['REQUEST_METHOD'] === 'POST') {
+      if(!is_admin()) {      
+        header('Location: /login');
+      }
       $id = filter_var($_POST['id'], FILTER_VALIDATE_INT);
       $speaker = Speaker::find($id);
       if(isset($speaker)) {
