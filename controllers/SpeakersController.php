@@ -12,7 +12,10 @@ class SpeakersController {
       header('Location: /login');
     }
     // Pagination
-    $current_page = 1;
+    $current_page = filter_var($_GET['page'], FILTER_VALIDATE_INT);
+    if(!$current_page || $current_page < 1) {
+      header('Location: /admin/ponentes?page=1');
+    }
     $page_records = 10;
     $total_records = 10;
     $pagination = new Pagination($current_page, $page_records, $total_records);
