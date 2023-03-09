@@ -17,8 +17,9 @@ class SpeakersController {
       header('Location: /admin/ponentes?page=1');
     }
     $page_records = 10;
-    $total_records = 10;
+    $total_records = Speaker::total();
     $pagination = new Pagination($current_page, $page_records, $total_records);
+    debug($pagination);
     
     // Get speakers
     $speakers = Speaker::all();

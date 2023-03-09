@@ -66,7 +66,15 @@ class ActiveRecord {
   public static function where($column, $value) {
     $query = "SELECT * FROM " . static::$table  ." WHERE ${column} = '${value}'";
     $result = self::sqlQuery($query);
-    return array_shift($result) ;
+    return array_shift($result);
+  }
+
+  // Get total records
+  public static function total() {
+    $query = "SELECT COUNT(*) FROM " . static::$table;
+    $result = self::$db->query($query);
+    $total = $result->fetch_array();
+    return array_shift($total);
   }
 
   // Find all records belonging to id
