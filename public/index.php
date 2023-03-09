@@ -43,6 +43,7 @@ $router->get('/admin/ponentes/crear', [SpeakersController::class, 'create']);
 $router->post('/admin/ponentes/crear', [SpeakersController::class, 'create']);
 $router->get('/admin/ponentes/editar', [SpeakersController::class, 'edit']);
 $router->post('/admin/ponentes/editar', [SpeakersController::class, 'edit']);
+$router->post('/admin/ponentes/eliminar', [SpeakersController::class, 'delete']);
 
 // Events
 $router->get('/admin/eventos', [EventsController::class, 'index']);

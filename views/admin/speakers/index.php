@@ -29,7 +29,8 @@
                 <i class="fa-solid fa-user-pen"></i>
                 Editar
               </a>
-              <form class="table__form" method="POST">
+              <form class="table__form" action="/admin/ponentes/eliminar" method="POST">
+                <input type="hidden" name="id" value="<?php echo $speaker->id; ?>">
                 <button class="table__action table__action--delete" type="submit">
                   <i class="fa-solid fa-circle-xmark"></i>
                   Eliminar

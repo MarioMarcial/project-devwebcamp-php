@@ -124,4 +124,18 @@ class SpeakersController {
       'socials' => json_decode($speaker->socials)
     ]);
   }
+
+  public static function delete() {
+    if($_SERVER['REQUEST_METHOD'] === 'POST') {
+      $id = filter_var($_POST['id'], FILTER_VALIDATE_INT);
+      $speaker = Speaker::find($id);
+      if(isset($speaker)) {
+        header('Location: /admin/ponentes');
+      }
+      $result = $speaker->delete();
+      if($result) {
+        header('Location: /admin/ponentes');
+      }
+    }
+  }
 }
