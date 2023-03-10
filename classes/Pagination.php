@@ -46,11 +46,26 @@ class Pagination {
     return $html;
   }
 
+  public function page_numbers() {
+    $html = '';
+    for($i = 1; $i <= $this->total_pages(); $i++) {
+      if($i === $this->current_page) {
+        $html .= "<span class=\"pagination__link pagination__link--current\">{$i}</span>";
+      } else {
+        $html .= "<a class=\"pagination__link pagination__link--number\" href=\"/admin/ponentes?page={$i}\">{$i}</a>";
+      }
+      
+    }
+
+    return $html;
+  }
+
   public function pagination() {
     $html = '';
     if($this->total_records > 1) {
       $html .= '<div class="pagination">';
       $html .= $this->prev_link();
+      $html .= $this->page_numbers();
       $html .= $this->next_link();
 
       $html .= '</div>';

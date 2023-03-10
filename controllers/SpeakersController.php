@@ -16,7 +16,7 @@ class SpeakersController {
     if(!$current_page || $current_page < 1) {
       header('Location: /admin/ponentes?page=1');
     }
-    $records_per_page = 4;
+    $records_per_page = 5;
     $total_records = Speaker::total();
     $pagination = new Pagination($current_page, $records_per_page, $total_records);
     if($current_page > $pagination->total_pages()) {
