@@ -19,7 +19,7 @@ class SpeakersController {
     $page_records = 10;
     $total_records = Speaker::total();
     $pagination = new Pagination($current_page, $page_records, $total_records);
-    debug($pagination);
+    debug($pagination->next_page());
     
     // Get speakers
     $speakers = Speaker::all();
