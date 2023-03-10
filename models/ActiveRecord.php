@@ -62,6 +62,13 @@ class ActiveRecord {
     return array_shift( $result ) ;
   }
 
+   // Paginate records
+   public static function paginate($per_page, $offset) {
+    $query = "SELECT * FROM " . static::$table . " ORDER BY id DESC LIMIT ${per_page} offset ${offset} ";
+    $result = self::sqlQuery($query);
+    return $result ;
+  }
+
   // Search a specific record
   public static function where($column, $value) {
     $query = "SELECT * FROM " . static::$table  ." WHERE ${column} = '${value}'";
