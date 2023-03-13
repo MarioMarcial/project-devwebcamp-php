@@ -53,3 +53,13 @@ CREATE TABLE `categories` (
 
 INSERT INTO `devwebcamp`.`categories` (`id`, `name`) VALUES ('1', 'Conferencias');
 INSERT INTO `devwebcamp`.`categories` (`id`, `name`) VALUES ('2', 'Workshops');
+
+
+CREATE TABLE `days` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(15) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+INSERT INTO `devwebcamp`.`days` (`id`, `name`) VALUES ('1', 'Viernes');
+INSERT INTO `devwebcamp`.`days` (`id`, `name`) VALUES ('2', 'Sábado');

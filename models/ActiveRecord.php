@@ -42,8 +42,8 @@ class ActiveRecord {
   }
 
   // All records
-  public static function all(){
-    $query = "SELECT * FROM " . static::$table;
+  public static function all($order = 'DESC'){
+    $query = "SELECT * FROM " . static::$table . " ORDER BY id ${order}";
     $result = self::sqlQuery($query);
     return $result;
   }

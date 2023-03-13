@@ -56,8 +56,14 @@
       border-top-left-radius: 0;
       border-bottom-left-radius:0; 
     }
-    &--textarea {
+  }
+  &__radio {
+    display: flex;
+    gap: 2rem;
 
+    &-content {
+      display: flex;
+      gap: .5rem;
     }
   }
   &__text {
