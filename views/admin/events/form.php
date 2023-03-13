@@ -35,4 +35,14 @@
       <?php } ?>
     </div>
   </div>
+  <div id="hours" class="form__group">
+    <label class="form__label">Seleccionar Hora:</label>
+    <ul class="hours">
+      <?php foreach ($hours as $hour) { ?>
+        <li class="hours__hour">
+          <?php echo $hour->hour; ?>
+        </li>
+      <?php } ?>
+    </ul>
+  </div>
 </fieldset>

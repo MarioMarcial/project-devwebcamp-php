@@ -4,6 +4,7 @@ namespace Controllers;
 use Model\Day;
 use MVC\Router;
 use Model\Category;
+use Model\Hour;
 
 class EventsController {
   public static function index(Router $router) {
@@ -16,11 +17,14 @@ class EventsController {
     $alerts = [];
     $categories = Category::all('ASC');
     $days = Day::all('ASC');
+    $hours = Hour::all('ASC');
+  
     $router->render('admin/events/create', [
       'title' => 'Crear Evento',
       'alerts' => $alerts,
       'categories' => $categories,
-      'days' => $days
+      'days' => $days,
+      'hours' => $hours
     ]);
   }
 }
