@@ -79,3 +79,23 @@ INSERT INTO `hours` (`id`, `hour`) VALUES
 (6, '17:00 - 17:55'),
 (7, '18:00 - 18:55'),
 (8, '19:00 - 19:55');
+
+CREATE TABLE `events` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(120) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `description` text,
+  `availables` int DEFAULT NULL,
+  `category_id` int NOT NULL,
+  `day_id` int NOT NULL,
+  `hour_id` int NOT NULL,
+  `speaker_id` int NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_events_categories_idx` (`category_id`),
+  KEY `fk_events_days1_idx` (`day_id`),
+  KEY `fk_events_hours1_idx` (`hour_id`),
+  KEY `fk_events_speakers1_idx` (`speaker_id`),
+  CONSTRAINT `fk_events_categories` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`),
+  CONSTRAINT `fk_events_days1` FOREIGN KEY (`day_id`) REFERENCES `days` (`id`),
+  CONSTRAINT `fk_events_hours1` FOREIGN KEY (`hour_id`) REFERENCES `hours` (`id`),
+  CONSTRAINT `fk_events_speakers1` FOREIGN KEY (`speaker_id`) REFERENCES `speakers` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
