@@ -47,6 +47,7 @@ $router->post('/admin/ponentes/eliminar', [SpeakersController::class, 'delete'])
 
 // Events
 $router->get('/admin/eventos', [EventsController::class, 'index']);
+$router->get('/admin/eventos/crear', [EventsController::class, 'create']);
 
 // Registered
 $router->get('/admin/registrados', [RegisteredController::class, 'index']);
