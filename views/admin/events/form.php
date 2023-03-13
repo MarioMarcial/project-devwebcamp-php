@@ -46,3 +46,14 @@
     </ul>
   </div>
 </fieldset>
+<fieldset class="form__fieldset">
+  <legend class="form__legend">Información Extra:</legend>
+  <div class="form__group">
+    <label for="speakers" class="form__label">Ponente:</label>
+    <input type="text" class="form__input" id="speakers" placeholder="Buscar Ponente">
+  </div>
+  <div class="form__group">
+    <label for="availables" class="form__label">Lugares Disponibles:</label>
+    <input type="number" min="1" class="form__input" id="availables" name="availables" placeholder="Ej. 20">
+  </div>
+</fieldset>
