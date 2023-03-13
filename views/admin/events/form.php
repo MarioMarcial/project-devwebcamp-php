@@ -6,14 +6,18 @@
   </div>
   <div class="form__group">
     <label for="description" class="form__label">Descripción:</label>
-    <textarea class="form__input form__input--textarea" name="description" id="description" rows="8" placeholder="Descripción Evento" value="<?php echo $event->description ?? ''; ?>"></textarea>
+    <textarea class="form__input form__input--textarea" 
+      name="description" 
+      id="description" 
+      rows="8"
+      placeholder="Descripción Evento"><?php echo $event->description; ?></textarea>
   </div>
   <div class="form__group">
     <label for="category">Tipo Evento:</label>
     <select id="category" name="category_id" class="form__input form__input--select">
-      <option value="" disabled selected>- Seleccionar -</option>
+      <option value="">- Seleccionar -</option>
       <?php foreach ($categories as $category) { ?>
-        <option value="<?php echo $category->id ?>"><?php echo $category->name ?></option>
+        <option <?php echo ($event->category_id === $category->id) ? 'selected' : ''; ?> value="<?php echo $category->id ?>"><?php echo $category->name ?></option>
       <?php } ?>
     </select>
   </div>
@@ -54,6 +58,6 @@
   </div>
   <div class="form__group">
     <label for="availables" class="form__label">Lugares Disponibles:</label>
-    <input type="number" min="1" class="form__input" id="availables" name="availables" placeholder="Ej. 20">
+    <input type="number" min="1" class="form__input" id="availables" name="availables" placeholder="Ej. 20" value="<?php echo $event->availables;?>">
   </div>
 </fieldset>
