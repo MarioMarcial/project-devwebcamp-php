@@ -10,6 +10,7 @@
     const category = document.querySelector('[name=category_id]');
     const days = document.querySelectorAll('[name=day_id]');
     const inputHiddenDay = document.querySelector('[name=day_id]');
+    const inputHiddenHour = document.querySelector('[name=hour_id]');
     category.addEventListener('change', endSearch);
     days.forEach(day => {
       day.addEventListener('change', endSearch);
@@ -35,7 +36,14 @@
     }
 
     function getAvailableHours() {
-      
+      const availableHours = document.querySelectorAll('#hours li');
+      availableHours.forEach(hour => {
+        hour.addEventListener('click', selectHour);
+      });
+    }
+
+    function selectHour(e) {
+      inputHiddenHour.value = e.target.dataset.hourId;
     }
   }
 })();
