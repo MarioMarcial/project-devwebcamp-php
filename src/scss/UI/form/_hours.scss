@@ -13,11 +13,18 @@
     text-align: center;
     color: v.$primary;
     @include m.transition(color background-color);
-    &:hover, &--selected {
-      cursor: pointer;
+    &--selected {    
       color: v.$white;
       background-color: v.$primary;
     }
-    
+    &--disabled {
+      @extend .hours__hour;
+      border: 1px solid v.$gray;
+      color: v.$gray;
+      opacity: .5;
+      &:hover {
+        cursor: not-allowed;
+      }
+    }
   }
 }

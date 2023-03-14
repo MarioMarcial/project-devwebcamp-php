@@ -27,15 +27,17 @@
     async function searchEvents(){
       // Get ids
       const { day_id, category_id } = search;
-      const url = `/api/eventos-horario?day_id=${day_id}&category_day=${category_id}`;
-      console.log(url);
+      const url = `/api/eventos-horario?day_id=${day_id}&category_id=${category_id}`;
       const result = await fetch(url);
       const events = await result.json();
-      
-      getAvailableHours();
+      getAvailableHours(events);
     }
 
-    function getAvailableHours() {
+    function getAvailableHours(events) {
+      // Check assigned events and remove the disabled class
+      const assignedHours = events.map(event => event.hour_id);
+      const hoursList = document.querySelectorAll('#hours li');
+      
       const availableHours = document.querySelectorAll('#hours li');
       availableHours.forEach(hour => {
         hour.addEventListener('click', selectHour);
