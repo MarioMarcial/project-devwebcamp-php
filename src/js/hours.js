@@ -43,6 +43,13 @@
     }
 
     function selectHour(e) {
+      // Deactive prev hour, if there is a new click
+      const prevHour = document.querySelector('.hours__hour--selected');
+      if(prevHour) {
+        prevHour.classList.remove('hours__hour--selected');
+      }
+      // Add selected class
+      e.target.classList.add('hours__hour--selected');
       inputHiddenHour.value = e.target.dataset.hourId;
     }
   }

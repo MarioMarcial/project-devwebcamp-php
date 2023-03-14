@@ -13,10 +13,11 @@
     text-align: center;
     color: v.$primary;
     @include m.transition(color background-color);
-    &:hover {
+    &:hover, &--selected {
       cursor: pointer;
       color: v.$white;
       background-color: v.$primary;
     }
+    
   }
 }
