@@ -38,10 +38,11 @@
         </div>
       <?php } ?>
     </div>
+    <input type="hidden" name="day_id" value="">
   </div>
   <div id="hours" class="form__group">
     <label class="form__label">Seleccionar Hora:</label>
-    <ul class="hours">
+    <ul id="hours" class="hours">
       <?php foreach ($hours as $hour) { ?>
         <li class="hours__hour">
           <?php echo $hour->hour; ?>
