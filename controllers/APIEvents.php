@@ -17,7 +17,7 @@ class APIEvents {
     }
 
     // Consult the bd
-    $events = EventSchedule::whereArray(['day_id' => $day_id, 'category_id' => $category_id]);
+    $events = EventSchedule::whereArray(['day_id' => $day_id, 'category_id' => $category_id]) ?? [];
     echo json_encode($events);
   }
 }

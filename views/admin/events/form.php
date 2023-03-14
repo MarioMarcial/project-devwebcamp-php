@@ -32,7 +32,7 @@
           <input type="radio" 
             class="form__input-radio"
             id="<?php echo strtolower($day->name); ?>"
-            name="day"
+            name="day_id"
             value="<?php echo $day->id; ?>"
           >
         </div>
