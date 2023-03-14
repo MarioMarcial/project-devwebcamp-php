@@ -76,6 +76,20 @@ class ActiveRecord {
     return array_shift($result);
   }
 
+  // Search Where with multiple options
+  public static function whereArray($array = []) {
+    $query = "SELECT * FROM " . static::$table  ." WHERE ";
+    foreach ($array as $key => $value) {
+      if($key === array_key_last($array)) {
+        $query .= "${key} = '${value}'";
+      } else {
+        $query .= "${key} = '${value}' AND ";
+      }
+    }
+    $result = self::sqlQuery($query);
+    return $result;
+  }
+
   // Get total records
   public static function total() {
     $query = "SELECT COUNT(*) FROM " . static::$table;
