@@ -37,8 +37,11 @@
       // Check assigned events and remove the disabled class
       const assignedHours = events.map(event => event.hour_id);
       const hoursList = document.querySelectorAll('#hours li');
-      
-      const availableHours = document.querySelectorAll('#hours li');
+      const hoursListArray = Array.from(hoursList);
+      const unassignedHours = hoursListArray.filter(li => !assignedHours.includes(li.dataset.hourId));
+      unassignedHours.forEach(li => li.classList.remove('hours__hour--disabled'));
+
+      const availableHours = document.querySelectorAll('#hours li:not(.hours__hour--disabled)');
       availableHours.forEach(hour => {
         hour.addEventListener('click', selectHour);
       });
