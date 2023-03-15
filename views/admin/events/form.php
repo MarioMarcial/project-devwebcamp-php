@@ -57,6 +57,9 @@
   <div class="form__group">
     <label for="speakers" class="form__label">Ponente:</label>
     <input type="text" class="form__input" id="speakers" placeholder="Buscar Ponente">
+    <ul id="speakers-list" class="speakers-list">
+
+    </ul>
   </div>
   <div class="form__group">
     <label for="availables" class="form__label">Lugares Disponibles:</label>

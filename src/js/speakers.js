@@ -4,6 +4,8 @@
     let speakers = [];
     let filteredSpeakers = [];
 
+    const speakersList = document.querySelector('#speakers-list');
+
     getSpeakers();
     inputSpeakers.addEventListener('input', searchSpeakers);
 
@@ -32,7 +34,32 @@
             return speaker;
           }
         })
-        console.log(filteredSpeakers);
+      } else {
+        filteredSpeakers = [];
+      }
+      showSpeakers();
+    }
+
+    function showSpeakers() {
+      while(speakersList.firstChild) {
+        speakersList.removeChild(speakersList.firstChild);
+      }
+
+      if(filteredSpeakers.length > 0) {
+        filteredSpeakers.forEach(speaker => {
+          const htmlSpeaker = document.createElement("LI");
+          htmlSpeaker.classList.add("speakers-list__speaker");
+          htmlSpeaker.textContent = speaker.name;
+          htmlSpeaker.dataset.speakerId = speaker.id;
+          console.log(htmlSpeaker);
+          // Add to DOM
+          speakersList.appendChild(htmlSpeaker);
+        })
+      } else {
+        const noResults = document.createElement("P");
+        noResults.classList.add("speakers-list__no-result");
+        noResults.textContent = 'No hay resultados para tu búsqueda';
+        speakersList.appendChild(noResults);
       }
     }
   }
