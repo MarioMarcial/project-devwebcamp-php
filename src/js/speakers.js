@@ -5,6 +5,7 @@
     let filteredSpeakers = [];
 
     const speakersList = document.querySelector('#speakers-list');
+    const hiddenSpeaker = document.querySelector('[name="speaker_id"]');
 
     getSpeakers();
     inputSpeakers.addEventListener('input', searchSpeakers);
@@ -51,7 +52,7 @@
           htmlSpeaker.classList.add("speakers-list__speaker");
           htmlSpeaker.textContent = speaker.name;
           htmlSpeaker.dataset.speakerId = speaker.id;
-          console.log(htmlSpeaker);
+          htmlSpeaker.onclick = selectSpeaker;
           // Add to DOM
           speakersList.appendChild(htmlSpeaker);
         })
@@ -61,6 +62,18 @@
         noResults.textContent = 'No hay resultados para tu búsqueda';
         speakersList.appendChild(noResults);
       }
+    }
+
+    function selectSpeaker(e) {     
+      const speaker = e.target;
+
+      const prevSpeaker = document.querySelector('.speakers-list__speaker--selected');
+      if(prevSpeaker) {
+        prevSpeaker.classList.remove('speakers-list__speaker--selected');
+      }
+
+      speaker.classList.add('speakers-list__speaker--selected');
+      hiddenSpeaker.value = speaker.dataset.speakerId;
     }
   }
 })();
