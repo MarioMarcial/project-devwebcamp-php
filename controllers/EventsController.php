@@ -29,7 +29,7 @@ class EventsController {
         $result = $event->save();
         if($result) {
           Event::setAlert('success', 'Evento Registrado');
-          header('Refresh 2: /admin/eventos');
+          header('Refresh: 1; url = /admin/eventos');
         }
       }
     }
@@ -44,3 +44,4 @@ class EventsController {
     ]);
   }
 }
+?>
