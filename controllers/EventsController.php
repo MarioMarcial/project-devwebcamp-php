@@ -1,6 +1,7 @@
 <?php
 namespace Controllers;
 
+use Classes\Pagination;
 use Model\Day;
 use MVC\Router;
 use Model\Category;
@@ -9,8 +10,23 @@ use Model\Hour;
 
 class EventsController {
   public static function index(Router $router) {
+    $current_page = $_GET['page'];
+    $current_page = filter_var($current_page, FILTER_VALIDATE_INT);
+    if(!$current_page || $current_page < 1) {
+      header('Location: /admin/eventos?page=1');
+    }
+    $per_page = 10;
+    $total = Event::total();
+    $pagination = new Pagination($current_page, $per_page, $total);
+    if($current_page > $pagination->total_pages()) {
+      header('Location: /admin/eventos?page=1');
+    }
+    // Get events
+    $events = Event::paginate($per_page, $pagination->offset());
     $router->render('admin/events/index', [
-      'title' => 'Crear Evento'
+      'title' => 'Crear Evento',
+      'events' => $events,
+      'pagination' => $pagination->pagination()
     ]);
   }
 
