@@ -21,7 +21,19 @@
         <?php foreach ($events as $event) { ?>
           <tr class="table__tr">
             <td class="table__td">
-              <?php echo $event->name?>
+              <?php echo $event->name; ?>
+            </td>
+            <td class="table__td">
+              <?php echo $event->category->name; ?>
+            </td>
+            <td class="table__td">
+              <?php echo $event->day->name . " " . $event->hour->hour; ?>
+            </td>
+            <td class="table__td">
+              <?php echo $event->speaker->name . " " . $event->speaker->lastname; ?>
+            </td>
+            <td class="table__td">
+              
             </td>
           </tr>
         <?php } ?>

@@ -62,7 +62,7 @@ class Pagination {
 
   public function pagination() {
     $html = '';
-    if($this->total_records > 1) {
+    if($this->total_records > $this->records_per_page) {
       $html .= '<div class="pagination">';
       $html .= $this->prev_link();
       $html .= $this->page_numbers();

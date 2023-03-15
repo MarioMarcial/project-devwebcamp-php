@@ -1,12 +1,13 @@
 <?php
 namespace Controllers;
 
-use Classes\Pagination;
 use Model\Day;
-use MVC\Router;
-use Model\Category;
-use Model\Event;
 use Model\Hour;
+use MVC\Router;
+use Model\Event;
+use Model\Speaker;
+use Model\Category;
+use Classes\Pagination;
 
 class EventsController {
   public static function index(Router $router) {
@@ -23,6 +24,14 @@ class EventsController {
     }
     // Get events
     $events = Event::paginate($per_page, $pagination->offset());
+
+    foreach ($events as $event) {
+      $event->category = Category::find($event->category_id);
+      $event->day = Day::find($event->day_id);
+      $event->hour = Hour::find($event->hour_id);
+      $event->speaker = Speaker::find($event->speaker_id);
+    }
+
     $router->render('admin/events/index', [
       'title' => 'Crear Evento',
       'events' => $events,
