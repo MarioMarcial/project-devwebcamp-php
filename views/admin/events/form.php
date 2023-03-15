@@ -38,7 +38,7 @@
         </div>
       <?php } ?>
     </div>
-    <input type="hidden" name="day_id" value="">
+    <input type="hidden" name="day" value="">
   </div>
   <div id="hours" class="form__group">
     <label class="form__label">Seleccionar Hora:</label>
