@@ -50,7 +50,8 @@ class PagesController {
       }
     }
     $router->render('pages/conferences', [
-      'title' => 'Workshops & Conferencias'
+      'title' => 'Workshops & Conferencias',
+      'events' => $format_events
     ]);
   }
 }
