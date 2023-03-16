@@ -73,7 +73,7 @@ class EventsController {
     $alerts = [];
     // Get id
     $id = filter_var($_GET['id'], FILTER_VALIDATE_INT);
-    if(!$id) {
+    if(!$id || $id < 1) {
       header('Location: /admin/eventos');
     }
     $categories = Category::all('ASC');

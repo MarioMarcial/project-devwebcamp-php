@@ -57,6 +57,7 @@ $router->post('/admin/eventos/editar', [EventsController::class, 'edit']);
 // API's
 $router->get('/api/eventos-horario', [APIEvents::class, 'index']);
 $router->get('/api/ponentes', [APISpeakers::class, 'index']);
+$router->get('/api/ponente', [APISpeakers::class, 'speaker']);
 
 // Registered
 $router->get('/admin/registrados', [RegisteredController::class, 'index']);

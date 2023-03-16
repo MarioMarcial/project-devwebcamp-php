@@ -61,7 +61,7 @@
     <ul id="speakers-list" class="speakers-list">
 
     </ul>
-    <input type="hidden" name="speaker_id" value="">
+    <input type="hidden" name="speaker_id" value="<?php echo $event->speaker_id; ?>">
   </div>
   <div class="form__group">
     <label for="availables" class="form__label">Lugares Disponibles:</label>

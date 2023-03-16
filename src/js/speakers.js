@@ -10,11 +10,30 @@
     getSpeakers();
     inputSpeakers.addEventListener('input', searchSpeakers);
 
+    if(hiddenSpeaker.value) {
+      (async() => {
+        const speaker = await getSpeaker(hiddenSpeaker.value);
+        // Add to the HTML
+        const speakerDOM = document.createElement("LI");
+        speakerDOM.classList.add("speakers-list__speaker", "speakers-list__speaker--selected");
+        speakerDOM.textContent = `${speaker.name} ${speaker.lastname}`;
+        speakersList.appendChild(speakerDOM);
+        
+      })()
+    }
+
     async function getSpeakers() {
       const url = `/api/ponentes`;
       const response = await fetch(url);
       const result = await response.json();
       speakersFormat(result);
+    }
+
+    async function getSpeaker(id) {
+      const url = `/api/ponente?id=${id}`;
+      const response = await fetch(url);
+      const result = await response.json();
+      return result;
     }
 
     function speakersFormat(arraySpeakers = []) {
