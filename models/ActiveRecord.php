@@ -76,6 +76,13 @@ class ActiveRecord {
     return array_shift($result);
   }
 
+  // Return records by an order
+  public static function order($column, $order) {
+    $query = "SELECT * FROM " . static::$table  ." ORDER BY ${column} ${order}";
+    $result = self::sqlQuery($query);
+    return $result;
+  }
+
   // Search Where with multiple options
   public static function whereArray($array = []) {
     $query = "SELECT * FROM " . static::$table  ." WHERE ";
