@@ -68,5 +68,43 @@ class EventsController {
       'event' => $event
     ]);
   }
+
+  public static function edit(Router $router) {
+    $alerts = [];
+    // Get id
+    $id = filter_var($_GET['id'], FILTER_VALIDATE_INT);
+    if(!$id) {
+      header('Location: /admin/eventos');
+    }
+    $categories = Category::all('ASC');
+    $days = Day::all('ASC');
+    $hours = Hour::all('ASC');
+
+    // New Event
+    $event = Event::find($id);
+    if(!$event) {
+      header('Location: /admin/eventos');
+    }
+    if($_SERVER['REQUEST_METHOD'] === 'POST') {
+      $event->sync($_POST);
+      $alerts = $event->validate();
+      if(empty($alerts)) {
+        $result = $event->save();
+        if($result) {
+          Event::setAlert('success', 'Evento Registrado');
+          header('Refresh: 2; url = /admin/eventos/editar?id=' . $id);
+        }
+      }
+    }
+    $alerts = Event::getAlerts();
+    $router->render('admin/events/edit', [
+      'title' => 'Editar Evento',
+      'alerts' => $alerts,
+      'categories' => $categories,
+      'days' => $days,
+      'hours' => $hours,
+      'event' => $event
+    ]);
+  }
 }
 ?>
