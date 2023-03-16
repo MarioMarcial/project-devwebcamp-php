@@ -6,6 +6,7 @@ use Controllers\APIEvents;
 use Controllers\APISpeakers;
 use Controllers\AuthController;
 use Controllers\GiftsController;
+use Controllers\PagesController;
 use Controllers\EventsController;
 use Controllers\SpeakersController;
 use Controllers\DashboardController;
@@ -65,5 +66,11 @@ $router->get('/admin/registrados', [RegisteredController::class, 'index']);
 
 // Gifts
 $router->get('/admin/regalos', [GiftsController::class, 'index']);
+
+// Public Area
+$router->get('/', [PagesController::class, 'index']);
+$router->get('/devwebcamp', [PagesController::class, 'event']);
+$router->get('/paquetes', [PagesController::class, 'packs']);
+$router->get('/workshops-conferencias', [PagesController::class, 'conferences']);
 $router->checkRoutes();
 ?>
