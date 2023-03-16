@@ -1,0 +1,36 @@
+@use "./base/variables" as v;
+@use "./base/mixins" as m;
+.packs {
+  &__grid {
+    @include m.container;
+    @include m.grid(1, 3rem);
+    @include m.tablet {
+      @include m.grid(3,3rem);
+      align-items: start;
+    }
+  }
+}
+.pack {
+  @include m.card;
+  &:nth-child(2) {
+    order: -1;
+    @include m.tablet {
+      order: initial;
+    }
+  }
+  
+  &__list {
+    @include m.reset-list;
+    line-height: 2;
+  }
+  &__list-item {
+
+  }
+  &__price {
+    margin: 3rem 0 0 0;
+    font-size: 6rem;
+    font-weight: v.$black;
+    text-align: center;
+    color: v.$primary;
+  }
+}
