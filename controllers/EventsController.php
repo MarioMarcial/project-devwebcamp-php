@@ -11,6 +11,9 @@ use Classes\Pagination;
 
 class EventsController {
   public static function index(Router $router) {
+    if(!is_admin()) {      
+      header('Location: /login');
+    }
     $current_page = $_GET['page'];
     $current_page = filter_var($current_page, FILTER_VALIDATE_INT);
     if(!$current_page || $current_page < 1) {
@@ -40,6 +43,9 @@ class EventsController {
   }
 
   public static function create(Router $router) {
+    if(!is_admin()) {      
+      header('Location: /login');
+    }
     $alerts = [];
     $categories = Category::all('ASC');
     $days = Day::all('ASC');
@@ -48,6 +54,9 @@ class EventsController {
     // New Event
     $event = New Event;
     if($_SERVER['REQUEST_METHOD'] === 'POST') {
+      if(!is_admin()) {      
+        header('Location: /login');
+      }
       $event->sync($_POST);
       $alerts = $event->validate();
       if(empty($alerts)) {
@@ -70,6 +79,9 @@ class EventsController {
   }
 
   public static function edit(Router $router) {
+    if(!is_admin()) {      
+      header('Location: /login');
+    }
     $alerts = [];
     // Get id
     $id = filter_var($_GET['id'], FILTER_VALIDATE_INT);
@@ -86,6 +98,9 @@ class EventsController {
       header('Location: /admin/eventos');
     }
     if($_SERVER['REQUEST_METHOD'] === 'POST') {
+      if(!is_admin()) {      
+        header('Location: /login');
+      }
       $event->sync($_POST);
       $alerts = $event->validate();
       if(empty($alerts)) {
@@ -105,6 +120,23 @@ class EventsController {
       'hours' => $hours,
       'event' => $event
     ]);
+  }
+
+  public static function delete() {
+    if($_SERVER['REQUEST_METHOD'] === 'POST') {
+      if(!is_admin()) {      
+        header('Location: /login');
+      }
+      $id = filter_var($_POST['id'], FILTER_VALIDATE_INT);
+      $event = Event::find($id);
+      if(isset($event)) {
+        header('Location: /admin/eventos');
+      }
+      $result = $event->delete();
+      if($result) {
+        header('Location: /admin/eventos');
+      }
+    }
   }
 }
 ?>

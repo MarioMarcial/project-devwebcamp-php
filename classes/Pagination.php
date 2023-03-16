@@ -52,7 +52,7 @@ class Pagination {
       if($i === $this->current_page) {
         $html .= "<span class=\"pagination__link pagination__link--current\">{$i}</span>";
       } else {
-        $html .= "<a class=\"pagination__link pagination__link--number\" href=\"/admin/ponentes?page={$i}\">{$i}</a>";
+        $html .= "<a class=\"pagination__link pagination__link--number\" href=\"?page={$i}\">{$i}</a>";
       }
       
     }
