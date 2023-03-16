@@ -2,7 +2,7 @@
   const hours = document.querySelector('#hours');
   
   if(hours) {
-    
+
     const category = document.querySelector('[name=category_id]');
     const days = document.querySelectorAll('[name=day_id]');
     const inputHiddenDay = document.querySelector('[name=day]');
