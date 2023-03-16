@@ -96,6 +96,13 @@
   margin: 6rem 0 3rem 0;
   text-align: center;
 }
+@mixin description-page {
+  margin-bottom: 5rem;
+  font-size: 1.8rem;
+  font-weight: v.$thin;
+  text-align: center;
+  color: v.$gray-dark;
+}
 
 @mixin flow-text($min, $max) {
   font-size: clamp($min, -0.8rem +  10vw ,$max);
