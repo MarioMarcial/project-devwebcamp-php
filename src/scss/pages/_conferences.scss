@@ -1,0 +1,24 @@
+@use "./base/variables" as v;
+@use "./base/mixins" as m;
+.diary {
+  padding: 5rem 0;
+  @include m.container;
+}
+.events {
+  $modifier: &;
+  &__heading {
+    margin: 5rem 0;
+    text-align: start;
+    font-size: clamp(2rem, -0.8rem + 8vw, 4rem);
+    color: v.$primary;
+  }
+  &__date {
+    margin: 3rem 0 1rem 0;
+    color: v.$gray;
+  }
+  &--workshops {
+    #{$modifier}__heading {
+      color: v.$secondary;
+    }
+  }
+}
