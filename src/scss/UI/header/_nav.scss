@@ -8,13 +8,13 @@
   }
   &__link {
     padding: 2rem;
-    font-size: 2.2rem;
+    font-size: 2rem;
     font-weight: v.$bold;
     text-transform: uppercase;
     text-align: center;
     color: v.$white;
     @include m.transition(color background-color);
-    &:hover {
+    &:hover, &--selected {
       color: v.$dark;
       background-color: v.$white;
     }

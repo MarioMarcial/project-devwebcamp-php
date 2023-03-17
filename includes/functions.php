@@ -14,7 +14,9 @@ function sanitize($html) : string {
 
 // Function that checks that the user is authenticated.
 function is_auth() : bool {
-  session_start();
+  if(!isset($_SESSION)){
+    session_start();
+  } 
   return isset($_SESSION['name']) && !empty($_SESSION);
 }
 

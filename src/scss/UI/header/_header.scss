@@ -22,6 +22,12 @@
   &__link {
     @include m.link;
   }
+  &__form {
+    display: flex;
+  }
+  &__submit {
+    @extend .header__link;
+  }
   &__content {
     padding-top: 10rem;
     @include m.tablet {
