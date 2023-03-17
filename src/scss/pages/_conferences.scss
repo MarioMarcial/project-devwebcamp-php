@@ -20,6 +20,12 @@
     #{$modifier}__heading {
       color: v.$secondary;
     }
+    .event__info {
+      background-color: v.$secondary;
+      &:hover {
+        background-color: darken($color: v.$secondary, $amount: 10);
+      }
+    }
   }
   .swiper-button-next, 
   .swiper-button-prev {
