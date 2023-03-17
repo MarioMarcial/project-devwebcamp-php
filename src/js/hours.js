@@ -20,6 +20,7 @@
 
     if(!Object.values(search).includes('')) {
       async function startApp() {
+        console.log(search);
         await searchEvents();
 
         // Add selected class to the current time
@@ -27,15 +28,17 @@
         const selectedHour = document.querySelector(`[data-hour-id="${id}"]`);
         selectedHour.classList.remove('hours__hour--disabled');
         selectedHour.classList.add('hours__hour--selected');
-        selectedHour.onclick = selectHour;
+        selectedHour.addEventListener('click', selectHour);
+        
       }
 
       startApp();
     }
 
     function searchTerms(e) {
-      search[e.target.name] = e.target.value;
-
+      
+      search[e.target.name] = +e.target.value;
+      console.log(search);
       // Reset hidden fields & hour selector
       inputHiddenHour.value = '';
       inputHiddenDay.value = '';
