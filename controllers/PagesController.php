@@ -9,10 +9,45 @@ use Model\Category;
 
 class PagesController {
   public static function index(Router $router) {
+    $events = Event::order('hour_id', 'ASC');
+    $format_events = [];
+    foreach($events as $event) {
+      $event->category = Category::find($event->category_id);
+      $event->day = Day::find($event->day_id);
+      $event->hour = Hour::find($event->hour_id);
+      $event->speaker = Speaker::find($event->speaker_id);
+
+      if($event->day_id === "1" && $event->category_id === "1") {
+        $format_events['friday_conferences'][] = $event;
+      }
+
+      if($event->day_id === "2" && $event->category_id === "1") {
+        $format_events['saturday_conferences'][] = $event;
+      }
+
+      if($event->day_id === "1" && $event->category_id === "2") {
+        $format_events['friday_workshops'][] = $event;
+      }
+
+      if($event->day_id === "2" && $event->category_id === "2") {
+        $format_events['saturday_workshops'][] = $event;
+      }
+    }
+
+    // get the total number of blocks
+    $speakers = Speaker::total();
+    $conferences = Event::total('category_id', '1');
+    $workshops = Event::total('category_id', '2');
+
     $router->render('pages/index', [
-      'title' => 'Inicio'
+      'title' => 'Inicio',
+      'events' => $format_events,
+      'speakers' => $speakers,
+      'conferences' => $conferences,
+      'workshops' => $workshops
     ]);
   }
+
   public static function event(Router $router) {
     $router->render('pages/devwebcamp', [
       'title' => 'Sobre DevWebCamp'

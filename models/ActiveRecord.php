@@ -98,8 +98,11 @@ class ActiveRecord {
   }
 
   // Get total records
-  public static function total() {
+  public static function total($column = '', $value = '') {
     $query = "SELECT COUNT(*) FROM " . static::$table;
+    if($column && $value) {
+      $query .= " WHERE ${column} = ${value}";
+    }
     $result = self::$db->query($query);
     $total = $result->fetch_array();
     return array_shift($total);

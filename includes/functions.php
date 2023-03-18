@@ -35,6 +35,6 @@ function start_session() {
 }
 
 function current_page($path) : bool {
-  return str_contains($_SERVER['PATH_INFO'], $path) ? true : false;
+  return str_contains($_SERVER['PATH_INFO'] ?? '/', $path) ? true : false;
 }
 ?>
