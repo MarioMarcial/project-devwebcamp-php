@@ -35,16 +35,20 @@ class PagesController {
     }
 
     // get the total number of blocks
-    $speakers = Speaker::total();
-    $conferences = Event::total('category_id', '1');
-    $workshops = Event::total('category_id', '2');
+    $total_speakers = Speaker::total();
+    $total_conferences = Event::total('category_id', '1');
+    $total_workshops = Event::total('category_id', '2');
+
+    // get speakers
+    $speakers = Speaker::all();
 
     $router->render('pages/index', [
       'title' => 'Inicio',
       'events' => $format_events,
-      'speakers' => $speakers,
-      'conferences' => $conferences,
-      'workshops' => $workshops
+      'total_speakers' => $total_speakers,
+      'total_conferences' => $total_conferences,
+      'total_workshops' => $total_workshops,
+      'speakers' => $speakers
     ]);
   }
 
