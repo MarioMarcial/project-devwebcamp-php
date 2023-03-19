@@ -1,7 +1,7 @@
 <?php 
   include_once __DIR__ . '/conferences.php';
 ?>
-
+<!-- Summary -->
 <section class="summary">
   <div class="summary__grid">
     <div class="summary__block">
@@ -22,6 +22,8 @@
     </div>
   </div>
 </section>
+
+<!-- Speakers -->
 <section class="speakers">
   <h2 class="speakers__heading">Speakers</h2>
   <p class="speakers__description">Conoce a nuestros expertos de DevWebCamp</p>
@@ -86,6 +88,33 @@
     <?php } ?>
   </div>
 </section>
-<div id="map" class="map">
 
+<!-- Map -->
+<div id="map" class="map">
 </div>
+
+<!-- Tickets -->
+<section class="tickets">
+  <h2 class="tickets__heading">Boletos & Precios</h2>
+  <p class="tickets__description">Precios para DevWebCamp</p>
+  <div class="tickets__grid">
+    <div class="ticket ticket--inperson">
+      <h4 class="ticket__logo">&#60;DevWebCamp/></h4>
+      <p class="ticket__plan">Presencial</p>
+      <p class="ticket__price">$199</p>
+    </div>
+    <div class="ticket ticket--virtual">
+      <h4 class="ticket__logo">&#60;DevWebCamp/></h4>
+      <p class="ticket__plan">Virtual</p>
+      <p class="ticket__price">$49</p>
+    </div>
+    <div class="ticket ticket--free">
+      <h4 class="ticket__logo">&#60;DevWebCamp/></h4>
+      <p class="ticket__plan">Gratis</p>
+      <p class="ticket__price">$0</p>
+    </div>
+  </div>
+  <div class="ticket__link-container">
+    <a href="/paquetes" class="ticket__link">Ver Paquetes</a>
+  </div>
+</section>
