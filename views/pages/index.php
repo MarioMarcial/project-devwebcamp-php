@@ -4,19 +4,19 @@
 <!-- Summary -->
 <section class="summary">
   <div class="summary__grid">
-    <div class="summary__block">
+    <div class="summary__block" data-aos="fade-left" >
       <p class="summary__text summary__text--num"><?php echo $total_speakers;?></p>
       <p class="summary__text">Speakers</p>
     </div>
-    <div class="summary__block">
+    <div class="summary__block" data-aos="fade-up">
       <p class="summary__text summary__text--num"><?php echo $total_conferences; ?></p>
       <p class="summary__text">Conferencias</p>
     </div>
-    <div class="summary__block">
+    <div class="summary__block" data-aos="fade-right">
       <p class="summary__text summary__text--num"><?php echo $total_workshops; ?></p>
       <p class="summary__text">Workshops</p>
     </div>
-    <div class="summary__block">
+    <div class="summary__block" data-aos="fade-up">
       <p class="summary__text summary__text--num">18</p>
       <p class="summary__text">Asistentes</p>
     </div>
