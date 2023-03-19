@@ -27,7 +27,7 @@ class Router {
     if($function) {
       call_user_func($function, $this);
     } else {
-      echo "Página no Encontrada o Ruta no válida";
+      header('Location: /404');
     }
   }
 

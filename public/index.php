@@ -72,5 +72,6 @@ $router->get('/', [PagesController::class, 'index']);
 $router->get('/devwebcamp', [PagesController::class, 'event']);
 $router->get('/paquetes', [PagesController::class, 'packs']);
 $router->get('/workshops-conferencias', [PagesController::class, 'conferences']);
+$router->get('/404', [PagesController::class, 'error']);
 $router->checkRoutes();
 ?>

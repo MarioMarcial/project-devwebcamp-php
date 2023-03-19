@@ -57,6 +57,7 @@ class PagesController {
       'title' => 'Sobre DevWebCamp'
     ]);
   }
+
   public static function packs(Router $router) {
     $router->render('pages/packs', [
       'title' => 'Paquetes DevWebCamp'
@@ -91,6 +92,12 @@ class PagesController {
     $router->render('pages/conferences', [
       'title' => 'Workshops & Conferencias',
       'events' => $format_events
+    ]);
+  }
+
+  public static function error(Router $router) {
+    $router->render('pages/404', [
+      'title' => 'Página no encontrada'
     ]);
   }
 }
