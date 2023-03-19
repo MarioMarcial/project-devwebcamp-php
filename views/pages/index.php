@@ -2,21 +2,21 @@
   include_once __DIR__ . '/conferences.php';
 ?>
 <!-- Summary -->
-<section class="summary">
+<section class="summary" <?php echo aos_animation();?>>
   <div class="summary__grid">
-    <div class="summary__block" data-aos="fade-left" >
+    <div class="summary__block" <?php echo aos_animation();?>>
       <p class="summary__text summary__text--num"><?php echo $total_speakers;?></p>
       <p class="summary__text">Speakers</p>
     </div>
-    <div class="summary__block" data-aos="fade-up">
+    <div class="summary__block" <?php echo aos_animation();?>>
       <p class="summary__text summary__text--num"><?php echo $total_conferences; ?></p>
       <p class="summary__text">Conferencias</p>
     </div>
-    <div class="summary__block" data-aos="fade-right">
+    <div class="summary__block" <?php echo aos_animation();?>>
       <p class="summary__text summary__text--num"><?php echo $total_workshops; ?></p>
       <p class="summary__text">Workshops</p>
     </div>
-    <div class="summary__block" data-aos="fade-up">
+    <div class="summary__block" <?php echo aos_animation();?>>
       <p class="summary__text summary__text--num">18</p>
       <p class="summary__text">Asistentes</p>
     </div>
@@ -29,7 +29,7 @@
   <p class="speakers__description">Conoce a nuestros expertos de DevWebCamp</p>
   <div class="speakers__grid">
     <?php foreach ($speakers as $speaker) { ?>
-      <div class="speaker">
+      <div class="speaker" <?php aos_animation();?>>
         <picture>
           <source srcset="<?php echo $_ENV['HOST'] . '/img/speakers/' . $speaker->image;?>.webp" type="image/webp">
           <source srcset="/img/speakers/<?php echo $speaker->image;?>.png" type="image/png">
