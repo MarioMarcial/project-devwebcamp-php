@@ -8,6 +8,7 @@ use Controllers\AuthController;
 use Controllers\GiftsController;
 use Controllers\PagesController;
 use Controllers\EventsController;
+use Controllers\RegisterController;
 use Controllers\SpeakersController;
 use Controllers\DashboardController;
 use Controllers\RegisteredController;
@@ -66,6 +67,9 @@ $router->get('/admin/registrados', [RegisteredController::class, 'index']);
 
 // Gifts
 $router->get('/admin/regalos', [GiftsController::class, 'index']);
+
+// User registration
+$router->get('/finalizar-registro', [RegisterController::class, 'create']);
 
 // Public Area
 $router->get('/', [PagesController::class, 'index']);
