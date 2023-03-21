@@ -9,6 +9,10 @@
       align-items: start;
     }
   }
+  &__submit {
+    @include m.button(v.$primary, v.$white);
+    margin-top: 3rem;
+  }
 }
 .pack {
   @include m.card;

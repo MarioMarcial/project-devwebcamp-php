@@ -70,6 +70,7 @@ $router->get('/admin/regalos', [GiftsController::class, 'index']);
 
 // User registration
 $router->get('/finalizar-registro', [RegisterController::class, 'create']);
+$router->post('/finalizar-registro/gratis', [RegisterController::class, 'free']);
 
 // Public Area
 $router->get('/', [PagesController::class, 'index']);
