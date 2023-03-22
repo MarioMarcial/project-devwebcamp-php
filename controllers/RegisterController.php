@@ -8,6 +8,14 @@ use Model\Register;
 
 class RegisterController {
   public static function create(Router $router) {
+    if(!is_auth()) {
+      header('Location: /');
+    }
+    // Check if the user is already registered
+    $register = Register::where('user_id', $_SESSION['id']);
+    if(isset($register) && $register->pack_id === "3") {
+      header('Location: /boleto?id=' . urlencode($register->token));
+    }
     $router->render('register/create', [
       'title' => 'Finalizar Registro'
     ]);
@@ -17,6 +25,12 @@ class RegisterController {
     if($_SERVER['REQUEST_METHOD'] === 'POST') {
       if(!is_auth()) {
         header('Location: /login');
+      }
+
+      // Check if the user is already registered
+      $register = Register::where('user_id', $_SESSION['id']);
+      if(isset($register) && $register->pack_id === "3") {
+        header('Location: /boleto?id=' . urlencode($register->token));
       }
 
       $token = substr(md5(uniqid(rand(), true)), 0, 8);
