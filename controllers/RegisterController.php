@@ -1,8 +1,10 @@
 <?php
 namespace Controllers;
 
-use Model\Register;
+use Model\Pack;
+use Model\User;
 use MVC\Router;
+use Model\Register;
 
 class RegisterController {
   public static function create(Router $router) {
@@ -34,6 +36,28 @@ class RegisterController {
         header('Location: /boleto?id=' . urlencode($register->token));
       }
     }
+  }
+
+  public static function ticket(Router $router) {
+    // Validate url
+    $id = $_GET['id'];
+    if(!$id || !preg_match("/^[a-zA-Z0-8]+$/", $id)) {
+      header('Location: /');
+    }
+
+    // Search
+    $register = Register::where('token', $id);
+    if(!$register) {
+      header('Location: /');
+    }
+
+    // Get reference info
+    $register->user = User::find($register->user_id);
+    $register->pack = Pack::find($register->pack_id);
+    $router->render('register/ticket', [
+      'title' => 'Asistencia a DevWebCamp',
+      'registration' => $register
+    ]);
   }
 }
 ?>
