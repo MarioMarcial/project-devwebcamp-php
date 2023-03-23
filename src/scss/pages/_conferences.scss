@@ -77,4 +77,12 @@
   &__autor-name {
     font-weight: v.$bold;
   }
+  &__add {
+    @include m.button(v.$white, v.$dark);
+    margin-top: 1rem;
+    &:disabled {
+      opacity: .5;
+      cursor: not-allowed;
+    }
+  }
 }
