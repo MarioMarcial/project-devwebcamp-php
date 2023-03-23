@@ -48,4 +48,25 @@
   &__heading {
     margin: 0 0 3rem 0;
   }
+  &__event {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    &:nth-child(even) {
+      background-color: darken($color: v.$gray-light, $amount: 4);
+    }
+  }
+  &__name {
+    margin: 0;
+    font-size: 2rem;
+    font-weight: v.$bold;
+  }
+  &__delete {
+    all: unset;
+    color: v.$error;
+    &:hover {
+      cursor: pointer;
+    }
+  }
 }

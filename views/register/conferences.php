@@ -31,6 +31,6 @@
   </main>
   <aside class="register">
     <h2 class="register__heading">Tu Registro</h2>
-    <div id="register_summary" class="register__sumary"></div>
+    <div id="register-summary" class="register__sumary"></div>
   </aside>
 </div>
