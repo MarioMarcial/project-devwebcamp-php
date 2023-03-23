@@ -84,5 +84,8 @@
       opacity: .5;
       cursor: not-allowed;
     }
+    @include m.tablet {
+      width: 100%;
+    }
   }
 }

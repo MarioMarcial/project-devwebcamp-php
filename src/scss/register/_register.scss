@@ -4,6 +4,7 @@
   @include m.container;
   @include m.tablet {
     display: flex;
+    align-items: flex-start;
     gap: 2rem;
   }
   &__list {
@@ -13,21 +14,38 @@
   }
   &__grid {
     @include m.grid(1, 3rem);
-    @include m.tablet {
+    @include m.desktop {
       @include m.grid(2, 3rem);
     }
   }
   &__heading {
-    &--conferences {
+    &--conferences, &--workshops {
       @include m.flow-text(2rem, 4rem);
       white-space: nowrap;
+    }
+    &--conferences {
       color: v.$primary;
     }
+    &--workshops {
+      margin-top: 6rem;
+      color: v.$secondary;
+    }
+  }
+  &__date {
+    margin: 6rem 0 3rem 0;
   }
 }
 
 .register {
+  padding: 3rem;
+  border-radius: 1rem;
+  background-color: v.$gray-light;
   @include m.tablet {
     flex: 0 0 40%;
+    position: sticky;
+    top: 3rem;
+  }
+  &__heading {
+    margin: 0 0 3rem 0;
   }
 }
