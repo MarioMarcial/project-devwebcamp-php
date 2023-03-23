@@ -38,7 +38,7 @@ class RegisterController {
       // Create registration
       $data = array(
         'pack_id' => 3,
-        'paymente_id' => '',
+        'payment_id' => '',
         'token' => $token,
         'user_id' => $_SESSION['id']
       );
@@ -48,6 +48,34 @@ class RegisterController {
       $result = $register->save();
       if($result) {
         header('Location: /boleto?id=' . urlencode($register->token));
+      }
+    }
+  }
+
+  public static function pay() {
+    if($_SERVER['REQUEST_METHOD'] === 'POST') {
+      if(!is_auth()) {
+        header('Location: /login');
+      }
+
+      // Validate that POST is not empty
+      if(empty($_POST)) {
+        echo json_encode(['está vacío']);
+        return;
+      }
+
+      // Create registration
+      $data = $_POST;
+      $data['token'] = substr(md5(uniqid(rand(), true)), 0, 8);
+      $data['user_id'] = $_SESSION['id'];
+      try {
+        $register = new Register($data);
+        $result = $register->save();
+        echo json_encode($result);
+      } catch (\Throwable $th) {
+        echo json_encode([
+          'result' => 'error'
+        ]);
       }
     }
   }
