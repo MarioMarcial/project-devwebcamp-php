@@ -9,6 +9,7 @@ use MVC\Router;
 use Model\Event;
 use Model\Speaker;
 use Model\Category;
+use Model\Gift;
 use Model\Register;
 
 class RegisterController {
@@ -144,9 +145,12 @@ class RegisterController {
       }
     }
 
+    $gifts = Gift::all('ASC');
+
     $router->render('register/conferences', [
       'title' => 'Elige Workshops y Conferencias',
-      'events' => $format_events
+      'events' => $format_events,
+      'gifts' => $gifts
     ]);
   }
 }

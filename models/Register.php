@@ -3,7 +3,7 @@ namespace Model;
 
 class Register extends ActiveRecord {
   protected static $table = 'registrations';
-  protected static $dbColumns = ['id', 'pack_id', 'payment_id', 'token', 'user_id'];
+  protected static $dbColumns = ['id', 'pack_id', 'payment_id', 'token', 'user_id', 'gift_id'];
 
   // This code block is optional
   public $id;
@@ -11,6 +11,7 @@ class Register extends ActiveRecord {
   public $payment_id;
   public $token;
   public $user_id;
+  public $gift_id;
 
   public function __construct($args = [])
   {
@@ -19,6 +20,7 @@ class Register extends ActiveRecord {
     $this->payment_id = $args['payment_id'] ?? '';
     $this->token = $args['token'] ?? '';
     $this->user_id = $args['user_id'] ?? '';
+    $this->gift_id = $args['gift_id'] ?? '';
   }
 }
 ?>

@@ -32,5 +32,23 @@
   <aside class="register">
     <h2 class="register__heading">Tu Registro</h2>
     <div id="register-summary" class="register__sumary"></div>
+    <div class="register__gift">
+      <label for="gift" class="register__label">
+        Selecciona un regalo:
+      </label>
+      <select id="gift" class="register__select">
+        <option value="">-- Selecciona tu regalo --</option>
+        <?php foreach ($gifts as $gift) { ?>
+          <option value="<?php echo $gift->id;?>">
+            <?php echo $gift->name; ?>
+          </option>
+        <?php } ?>
+      </select>
+    </div>
+    <form action="" id="register" class="form">
+      <div class="form__group">
+        <input type="submit" class="form__submit form__submit--full" value="Registrarme">
+      </div>
+    </form>
   </aside>
 </div>
