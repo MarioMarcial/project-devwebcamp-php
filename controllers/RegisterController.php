@@ -147,6 +147,42 @@ class RegisterController {
 
     $gifts = Gift::all('ASC');
 
+    // $_POST register
+    if($_SERVER['REQUEST_METHOD'] === 'POST') {
+      
+      // Check that the user is logged in
+      if(!is_auth()){
+        header('Location: /login');
+      }
+
+      // Events id
+      $events = explode(',', $_POST['events']);
+      if(empty($events)) {
+        echo json_encode(['result' => false]);
+        return;
+      }
+
+      // Get the user registration
+      $register = Register::where('user_id', $_SESSION['id']);
+      if(!isset($register) || $register->pack_id !== "1") {
+        echo json_encode(['result' => false]);
+        return;
+      }
+
+      // Check availability of the selected events
+      foreach($events as $event_id) {
+        $event = Event::find($event_id);
+
+        // check that the event exists
+        if(isset($event) || $event->avalables === "0") {
+          echo json_encode(['result' => false]);
+          return;
+        }
+
+        $event->availables -= 1;
+      }
+    }
+
     $router->render('register/conferences', [
       'title' => 'Elige Workshops y Conferencias',
       'events' => $format_events,
