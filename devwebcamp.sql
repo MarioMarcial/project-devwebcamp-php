@@ -174,3 +174,14 @@ INSERT INTO `gifts` (`id`, `name`) VALUES
 (7, 'Camisa Hombre - Mediana'),
 (8, 'Camisa Hombre - Grande'),
 (9, 'Camisa Hombre - XL');
+
+CREATE TABLE `events_registrations` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `event_id` int DEFAULT NULL,
+  `registration_id` int DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `event_id` (`event_id`),
+  KEY `registration_id` (`registration_id`),
+  CONSTRAINT `events_registrations_ibfk_1` FOREIGN KEY (`event_id`) REFERENCES `events` (`id`),
+  CONSTRAINT `events_registrations_ibfk_2` FOREIGN KEY (`registration_id`) REFERENCES `registrations` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;

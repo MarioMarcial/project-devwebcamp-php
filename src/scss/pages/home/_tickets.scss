@@ -32,7 +32,7 @@
     right: 0;
   }
   
-  &--inperson {
+  &--inperson, &--presencial {
     background-color:hsla(178,100%,39%,1);
     background-image:
     radial-gradient(at 91% 45%, hsla(209,100%,47%,1) 0px, transparent 50%),
@@ -46,7 +46,7 @@
   &--virtual {
     background-color: v.$secondary;
   }
-  &--free {
+  &--free, &--gratis {
     background-color: v.$primary;
   }
   $modifier : &;

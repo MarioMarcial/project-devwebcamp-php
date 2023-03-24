@@ -9,6 +9,7 @@ use MVC\Router;
 use Model\Event;
 use Model\Speaker;
 use Model\Category;
+use Model\EventsRegistrations;
 use Model\Gift;
 use Model\Register;
 
@@ -22,6 +23,11 @@ class RegisterController {
     if(isset($register) && $register->pack_id === "3") {
       header('Location: /boleto?id=' . urlencode($register->token));
     }
+
+    if($register->pack_id === "1" ) {
+      header('Location: /finalizar-registro/conferencias');
+    }
+
     $router->render('register/create', [
       'title' => 'Finalizar Registro'
     ]);
@@ -42,12 +48,12 @@ class RegisterController {
       $token = substr(md5(uniqid(rand(), true)), 0, 8);
 
       // Create registration
-      $data = array(
+      $data = [
         'pack_id' => 3,
         'payment_id' => '',
         'token' => $token,
         'user_id' => $_SESSION['id']
-      );
+      ];
 
       $register = new Register($data);
 
@@ -66,7 +72,7 @@ class RegisterController {
 
       // Validate that POST is not empty
       if(empty($_POST)) {
-        echo json_encode(['está vacío']);
+        echo json_encode([]);
         return;
       }
 
@@ -118,6 +124,11 @@ class RegisterController {
     $register = Register::where('user_id', $user_id);
     if($register->pack_id !== "1") {
       header('Location: /');
+    }
+
+    // If the user has already completed the registration, then redirect to the virtual ticket
+    if(isset($register->gift_id)) {
+      header('Location: /boleto?id=' . urlencode($register->token));
     }
     $events = Event::order('hour_id', 'ASC');
     $format_events = [];
@@ -184,8 +195,29 @@ class RegisterController {
         $event->availables -= 1;
         $event->save();
 
-        // Almacenar el registro
+        // Save registrations
+        $data = [
+          'event_id' => (int) $event->id,
+          'registration_id' => (int) $register->id
+        ];
+
+        $registration_user = new EventsRegistrations($data);
+        $registration_user->save();
       }
+
+      // Save selected gift
+      $register->sync(['gift_id' => $_POST['gift_id']]);
+      $result = $register->save();
+
+      if($result) {
+        echo json_encode([
+          'result' => $result,
+          'token' => $register->token
+        ]);
+      } else {
+        echo json_encode(['result' => false]);
+      }
+      return;
     }
 
     $router->render('register/conferences', [
