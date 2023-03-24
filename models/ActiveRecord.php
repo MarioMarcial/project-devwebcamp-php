@@ -55,15 +55,15 @@ class ActiveRecord {
     return array_shift($result) ;
   }
 
-   // Get a number of results
+  // Get a number of results
   public static function get($limit) {
-    $query = "SELECT * FROM " . static::$table . " LIMIT ${limit}";
+    $query = "SELECT * FROM " . static::$table . " ORDER BY id DESC LIMIT ${limit}";
     $result = self::sqlQuery($query);
-    return array_shift( $result ) ;
+    return $result;
   }
 
-   // Paginate records
-   public static function paginate($per_page, $offset) {
+  // Paginate records
+  public static function paginate($per_page, $offset) {
     $query = "SELECT * FROM " . static::$table . " ORDER BY id DESC LIMIT ${per_page} offset ${offset} ";
     $result = self::sqlQuery($query);
     return $result ;
