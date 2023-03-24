@@ -3,6 +3,7 @@ namespace Controllers;
 use Model\Pack;
 use Model\User;
 use MVC\Router;
+use Model\Event;
 use Model\Register;
 
 class DashboardController {
@@ -23,10 +24,16 @@ class DashboardController {
 
     $income = ($premium * 189.54) + ($virtuals * 46.41);
 
+    // Get events with maximum and minimum availables
+    $min_availables = Event::orderLimit('availables', 'ASC', 5);
+    $max_availables = Event::orderLimit('availables', 'DESC', 5);
+
     $router->render('admin/dashboard/index', [
       'title' => 'Panel de Administración',
       'registrations' => $registrations,
-      'income' => $income
+      'income' => $income,
+      'min_availables' => $min_availables,
+      'max_availables' => $max_availables
     ]);
   }
 }

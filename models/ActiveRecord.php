@@ -83,6 +83,13 @@ class ActiveRecord {
     return $result;
   }
 
+  // Return records by order and limit
+  public static function orderLimit($column, $order, $limit) {
+    $query = "SELECT * FROM " . static::$table  ." ORDER BY ${column} ${order} LIMIT ${limit}";
+    $result = self::sqlQuery($query);
+    return $result;
+  }
+
   // Search Where with multiple options
   public static function whereArray($array = []) {
     $query = "SELECT * FROM " . static::$table  ." WHERE ";
