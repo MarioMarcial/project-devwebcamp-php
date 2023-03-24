@@ -17,9 +17,16 @@ class DashboardController {
       $registration->pack = Pack::find($registration->pack_id);
     }
 
+    // Calculate income 
+    $premium = Register::total('pack_id', 1);
+    $virtuals = Register::total('pack_id', 2);
+
+    $income = ($premium * 189.54) + ($virtuals * 46.41);
+
     $router->render('admin/dashboard/index', [
       'title' => 'Panel de Administración',
-      'registrations' => $registrations
+      'registrations' => $registrations,
+      'income' => $income
     ]);
   }
 }
