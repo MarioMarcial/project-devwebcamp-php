@@ -119,7 +119,6 @@ class RegisterController {
     if($register->pack_id !== "1") {
       header('Location: /');
     }
-
     $events = Event::order('hour_id', 'ASC');
     $format_events = [];
     foreach($events as $event) {
@@ -169,17 +168,23 @@ class RegisterController {
         return;
       }
 
+      $events_array = [];
       // Check availability of the selected events
       foreach($events as $event_id) {
         $event = Event::find($event_id);
-
         // check that the event exists
-        if(isset($event) || $event->avalables === "0") {
+        if(!isset($event) || $event->availables === "0") {
           echo json_encode(['result' => false]);
           return;
         }
+        $events_array[] = $event;
+      }
 
+      foreach($events_array as $event) {
         $event->availables -= 1;
+        $event->save();
+
+        // Almacenar el registro
       }
     }
 
