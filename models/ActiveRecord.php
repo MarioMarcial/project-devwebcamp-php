@@ -127,7 +127,7 @@ class ActiveRecord {
     $attributes = $this->dataSanitize();
 
     // Insert to database
-    $query = " INSERT INTO " . static::$table . " (";
+    $query = "INSERT INTO " . static::$table . " (";
     $query .= join(', ', array_keys($attributes));
     $query .= ") VALUES ('"; 
     $query .= join("', '", array_values($attributes));

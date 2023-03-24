@@ -1,11 +1,11 @@
 <?php
 namespace Controllers;
 
+use MVC\Router;
 use Model\Day;
 use Model\Hour;
 use Model\Pack;
 use Model\User;
-use MVC\Router;
 use Model\Event;
 use Model\Speaker;
 use Model\Category;
@@ -20,12 +20,13 @@ class RegisterController {
     }
     // Check if the user is already registered
     $register = Register::where('user_id', $_SESSION['id']);
-    if(isset($register) && $register->pack_id === "3") {
+    if(isset($register) && ($register->pack_id === "3" || $register->pack_id === "2")) {
       header('Location: /boleto?id=' . urlencode($register->token));
     }
 
-    if($register->pack_id === "1" ) {
+    if(isset($register) && $register->pack_id === "1" ) {
       header('Location: /finalizar-registro/conferencias');
+      return;
     }
 
     $router->render('register/create', [
@@ -56,7 +57,6 @@ class RegisterController {
       ];
 
       $register = new Register($data);
-
       $result = $register->save();
       if($result) {
         header('Location: /boleto?id=' . urlencode($register->token));
@@ -117,18 +117,27 @@ class RegisterController {
   public static function conferences(Router $router) {
     if(!is_auth()){
       header('Location: /login');
+      return;
+    }
+
+    $user_id = $_SESSION['id'];
+    $register = Register::where('user_id', $user_id);
+
+    if(isset($register) && $register->pack_id === "2") {
+      header('Location: /boleto?id=' . urlencode($register->token));
+      return;
     }
 
     // check that the user has paid for the ticket in person
-    $user_id = $_SESSION['id'];
-    $register = Register::where('user_id', $user_id);
     if($register->pack_id !== "1") {
       header('Location: /');
+      return;
     }
 
     // If the user has already completed the registration, then redirect to the virtual ticket
-    if(isset($register->gift_id)) {
+    if(isset($register->gift_id) && $register->pack_id === "1") {
       header('Location: /boleto?id=' . urlencode($register->token));
+      return;
     }
     $events = Event::order('hour_id', 'ASC');
     $format_events = [];
@@ -163,6 +172,7 @@ class RegisterController {
       // Check that the user is logged in
       if(!is_auth()){
         header('Location: /login');
+        return;
       }
 
       // Events id

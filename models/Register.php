@@ -20,7 +20,7 @@ class Register extends ActiveRecord {
     $this->payment_id = $args['payment_id'] ?? '';
     $this->token = $args['token'] ?? '';
     $this->user_id = $args['user_id'] ?? '';
-    $this->gift_id = $args['gift_id'] ?? '';
+    $this->gift_id = $args['gift_id'] ?? 1;
   }
 }
 ?>
