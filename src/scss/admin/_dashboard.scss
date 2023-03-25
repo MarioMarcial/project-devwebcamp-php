@@ -105,4 +105,7 @@
     background-color: v.$white;
     overflow: auto;
   }
+  &__graph {
+    @include m.container-sm;
+  }
 }

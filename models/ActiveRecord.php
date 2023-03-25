@@ -115,6 +115,21 @@ class ActiveRecord {
     return array_shift($total);
   }
 
+  // Get total records with array where
+  public static function totalArray($array = []) {
+    $query = "SELECT COUNT(*) FROM " . static::$table . " WHERE ";
+    foreach ($array as $key => $value) {
+      if($key === array_key_last($array)) {
+        $query .= "${key} = '${value}'";
+      } else {
+        $query .= "${key} = '${value}' AND ";
+      }
+    }
+    $result = self::$db->query($query);
+    $total = $result->fetch_array();
+    return array_shift($total);
+  }
+
   // Find all records belonging to id
   public static function belongsTo($column, $value) {
     $query = "SELECT * FROM " . static::$table  ." WHERE ${column} = '${value}'";
